@@ -159,14 +159,14 @@ export const ClientPortalModal: React.FC<ClientPortalModalProps> = ({
                 </div>
                 <div>
                   <span className="text-xs font-display font-bold uppercase text-white block">
-                    Alex Thorne
+                    Ritesh Singh
                   </span>
                   <span className="text-[10px] font-mono text-[#8e9189]">
-                    Managing Partner & Lead Architect
+                    Founder & Developer
                   </span>
                 </div>
               </div>
-              <span className="text-xs font-mono text-[#6b7d50]">alex@webza.agency</span>
+              <span className="text-xs font-mono text-[#6b7d50]">hello@webza.agency</span>
             </div>
 
             <button

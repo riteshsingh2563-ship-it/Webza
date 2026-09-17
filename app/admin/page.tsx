@@ -1239,7 +1239,7 @@ export default function AdminDashboard() {
                     slug: '',
                     excerpt: '',
                     content: '',
-                    author: 'Alex Thorne, Managing Partner',
+                    author: 'Ritesh Singh, Founder & Developer',
                     publishedAt: new Date().toISOString().split('T')[0],
                     status: 'published',
                     tags: ['Design Systems', 'Philosophy'],

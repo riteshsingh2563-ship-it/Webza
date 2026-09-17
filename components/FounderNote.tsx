@@ -1,95 +1,103 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 
 interface FounderNoteProps {
   onOpenDraftModal?: () => void;
 }
 
 export function FounderNote({ onOpenDraftModal }: FounderNoteProps) {
+  const teamMembers = [
+    {
+      name: 'Ritesh Singh',
+      role: 'Founder & Developer',
+      initials: 'RS',
+      bio: 'Leads web engineering, full-stack architecture, and platform development at WEBZA.',
+    },
+    {
+      name: 'Priyanshu Patel',
+      role: 'Co-Founder & Calling',
+      initials: 'PP',
+      bio: 'Directs client communications, onboarding calls, and customer coordination.',
+    },
+    {
+      name: 'Jatin Sahu',
+      role: 'Developer',
+      initials: 'JS',
+      bio: 'Builds clean frontend components, responsive layouts, and modern user interfaces.',
+    },
+    {
+      name: 'Ayush Verma',
+      role: 'Research & Sales',
+      initials: 'AV',
+      bio: 'Conducts market research, digital presence analysis, and client outreach.',
+    },
+  ];
+
   return (
     <section className="py-20 lg:py-28 bg-[#FAF7F1] text-[#221D15]" id="founder">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-5xl mx-auto">
-          {/* Portrait / Visual Card */}
-          <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="relative w-full max-w-sm aspect-[4/5] rounded-2xl overflow-hidden border border-[#221D15]/15 shadow-[0_20px_50px_rgba(34,29,21,0.08)] bg-white p-2">
-              <div className="relative w-full h-full rounded-xl overflow-hidden bg-[#151913]">
-                <Image
-                  src="/brand/webza-brand-poster.jpg"
-                  alt="WEBZA Brand Poster & Engineering Philosophy"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            <div className="mt-4 text-center">
-              <div className="font-heading font-bold text-lg text-[#221D15]">
-                The WEBZA Engineering Team
-              </div>
-              <div className="font-body text-xs text-[#221D15]/60">
-                Built to be Seen • Mumbai &amp; Global Remote
-              </div>
-            </div>
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#221D15]/10 shadow-sm mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#0FA88F]" />
+            <span className="font-label text-xs font-semibold tracking-wider text-[#221D15] uppercase">
+              The WEBZA Team
+            </span>
           </div>
 
-          {/* Editorial Content Column */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#221D15]/10 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#0FA88F]" />
-              <span className="font-label text-xs font-semibold tracking-wider text-[#221D15] uppercase">
-                Who’s behind this
-              </span>
-            </div>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#221D15] tracking-tight">
+            Built by builders.{' '}
+            <span className="italic font-normal text-[#6B7D50]">Direct and focused.</span>
+          </h2>
 
-            <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-[#221D15] tracking-tight leading-tight">
-              Websites shouldn’t be a{' '}
-              <span className="italic font-normal text-[#6B7D50]">luxury</span> or an endless headache.
-            </h2>
+          <p className="font-body text-base sm:text-lg text-[#221D15]/75 mt-4 leading-relaxed">
+            WEBZA is a web development and creative studio focused on building modern, professional websites for businesses. Founded by Ritesh Singh, our team works directly with clients to deliver high-quality digital experiences.
+          </p>
+        </div>
 
-            <div className="space-y-4 font-body text-sm sm:text-base text-[#221D15]/80 leading-relaxed">
-              <p>
-                Every growing business needs a flagship website that commands trust, loads instantly, and gets recommended by modern search engines. Yet for years, founders were forced into an impossible dilemma:
-              </p>
-              <p>
-                Either pay traditional agencies <strong className="text-[#221D15] font-semibold">₹1,50,000+ (₹1,50,000)</strong> for months of bloated meetings and delay, or sacrifice weekends wrestling DIY builders that break on mobile and look generic.
-              </p>
-              <p>
-                We built <strong className="text-[#221D15] font-semibold">WEBZA</strong> to obliterate that compromise. By automating 90% of repetitive web infrastructure with Next.js 14 and edge computing, our senior human designers focus 100% of their energy on brand aesthetics, conversion storytelling, and speed.
-              </p>
-            </div>
-
-            {/* Facts Checklist */}
-            <div className="space-y-2.5 pt-2">
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-body text-[#221D15]">
-                <span className="text-[#0FA88F] font-bold">✓</span>
-                <span>Senior full-stack engineering with sub-second performance standards</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-body text-[#221D15]">
-                <span className="text-[#0FA88F] font-bold">✓</span>
-                <span>Real human designers and copywriters — zero automated boilerplate</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-body text-[#221D15]">
-                <span className="text-[#0FA88F] font-bold">✓</span>
-                <span>Direct WhatsApp developer communication — no support tickets</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-body text-[#221D15]">
-                <span className="text-[#0FA88F] font-bold">✓</span>
-                <span>100% risk-free: Review your custom draft in 24h before paying</span>
+        {/* 4-Member Team Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {teamMembers.map((member) => (
+            <div
+              key={member.name}
+              className="bg-white border border-[#221D15]/10 rounded-2xl p-7 text-center shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-16 h-16 rounded-2xl bg-[#151913] text-[#FAF7F1] border border-[#6B7D50]/30 flex items-center justify-center mx-auto mb-5 font-heading font-bold text-xl tracking-wider shadow-sm">
+                  {member.initials}
+                </div>
+                <h3 className="font-heading font-bold text-xl text-[#221D15] mb-1">
+                  {member.name}
+                </h3>
+                <div className="font-label text-xs font-bold uppercase tracking-wider text-[#6B7D50] mb-3">
+                  {member.role}
+                </div>
+                <p className="font-body text-xs sm:text-sm text-[#221D15]/70 leading-relaxed">
+                  {member.bio}
+                </p>
               </div>
             </div>
+          ))}
+        </div>
 
-            <div className="pt-2">
-              <button
-                type="button"
-                onClick={onOpenDraftModal}
-                className="bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-sm px-6 py-3 rounded-full shadow-md transition-colors"
-              >
-                Get Started With WEBZA Today →
-              </button>
+        {/* Principles / Commitment Bar */}
+        <div className="mt-14 max-w-4xl mx-auto bg-white border border-[#221D15]/10 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+          <div className="space-y-1 text-center sm:text-left">
+            <div className="font-heading font-bold text-base sm:text-lg text-[#221D15]">
+              Work directly with our engineering team
             </div>
+            <p className="font-body text-xs sm:text-sm text-[#221D15]/70">
+              No middle management. Clean Next.js code, complete asset ownership, and honest pricing.
+            </p>
           </div>
+          <button
+            type="button"
+            onClick={onOpenDraftModal}
+            className="flex-shrink-0 bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-xs sm:text-sm px-6 py-3 rounded-full shadow-md transition-colors"
+          >
+            Request a Free Draft →
+          </button>
         </div>
       </div>
     </section>

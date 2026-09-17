@@ -51,29 +51,28 @@ export function WhatIsTheCatch() {
           </div>
         </div>
 
-        {/* The Math Card */}
+        {/* Transparent Pricing Card */}
         <div className="max-w-3xl mx-auto bg-white border border-[#221D15]/15 rounded-2xl p-6 sm:p-8 shadow-xl text-center mb-12">
           <div className="font-heading text-xl sm:text-2xl font-bold text-[#221D15] flex items-center justify-center flex-wrap gap-2">
-            <span>One traditional agency invoice (₹1,50,000) =</span>
-            <span className="text-[#6B7D50] text-3xl sm:text-4xl font-extrabold">15+ Years</span>
-            <span>of WEBZA.</span>
+            <span>Direct, Honest Pricing:</span>
+            <span className="text-[#6B7D50] text-2xl sm:text-3xl font-extrabold">Development From ₹9,999</span>
           </div>
 
-          {/* 15 Year Blocks Grid */}
-          <div className="grid grid-cols-5 sm:grid-cols-15 gap-2 max-w-md mx-auto my-6">
-            {Array.from({ length: 15 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-md bg-[#6B7D50]/15 border border-[#6B7D50]/30 flex items-center justify-center text-[10px] font-mono font-bold text-[#4E5B38]"
-                title={`Year ${i + 1} of managed flagship web operations`}
-              >
-                Y{i + 1}
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto my-6 text-left">
+            <div className="p-4 rounded-xl bg-[#FAF7F1] border border-[#221D15]/10">
+              <div className="text-xs font-mono uppercase tracking-wider text-[#6B7D50] font-bold">Development Silver</div>
+              <div className="text-2xl font-bold text-[#221D15] mt-1">₹9,999</div>
+              <div className="text-xs text-[#221D15]/70 mt-1">Responsive, modern website, mobile & desktop optimized.</div>
+            </div>
+            <div className="p-4 rounded-xl bg-[#FAF7F1] border border-[#221D15]/10">
+              <div className="text-xs font-mono uppercase tracking-wider text-[#6B7D50] font-bold">Development Gold</div>
+              <div className="text-2xl font-bold text-[#221D15] mt-1">₹12,599</div>
+              <div className="text-xs text-[#221D15]/70 mt-1">Everything in Silver + Custom Admin Portal & content management.</div>
+            </div>
           </div>
 
           <p className="font-body text-xs sm:text-sm text-[#221D15]/70 max-w-lg mx-auto">
-            Each square represents a full year of your business website — custom designed, hosted on edge global CDN, optimized for Google &amp; AI search, and updated on demand.
+            Hosting plans are separated clearly (₹5,400 / 12 mo, ₹8,500 / 24 mo, ₹15,000 / 48 mo). Zero surprises, zero hidden fees.
           </p>
         </div>
 

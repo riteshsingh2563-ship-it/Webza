@@ -63,7 +63,7 @@ Users have developed subconscious blindness to generic SaaS hero sections. The s
 
 At WEBZA, we believe the next era of digital dominance belongs to brands that invest in bespoke art direction and full-stack software excellence.`,
     coverImage: '/brand/webza-brand-poster.jpg',
-    author: 'Alex Thorne, Managing Partner',
+    author: 'Ritesh Singh, Founder & Developer',
     publishedAt: '2026-09-01',
     status: 'published',
     tags: ['Design Systems', 'Philosophy', 'Creative Tech'],
@@ -79,7 +79,7 @@ At WEBZA, we believe the next era of digital dominance belongs to brands that in
 
 Every millisecond of latency introduces friction between the user’s intent and the application’s response. By pairing Next.js App Router streaming with edge compute and WebAssembly modules, we achieve desktop-grade performance directly inside the browser.`,
     coverImage: '/brand/webza-logo-master.jpg',
-    author: 'Elena Rostova, Lead Systems Architect',
+    author: 'Jatin Sahu, Developer',
     publishedAt: '2026-08-20',
     status: 'published',
     tags: ['Engineering', 'Next.js', 'Performance'],

@@ -55,13 +55,13 @@ export function HeroStorebox({ onOpenDraftModal }: HeroStoreboxProps) {
                 ✓
               </span>
               <span>
-                Over <strong className="text-[#221D15] font-semibold">150+ high-growth businesses</strong> built to be seen with WEBZA
+                Bespoke digital flagships &amp; modern web engineering by <strong className="text-[#221D15] font-semibold">WEBZA</strong>
               </span>
             </div>
 
             {/* Subtitle / Paragraph */}
             <p className="font-body text-base sm:text-lg text-[#221D15]/80 max-w-xl leading-relaxed">
-              We design, build, and manage your website, SEO, and AEO so you show up on Google and get recommended by AI search engines. No DIY. No headache. Just results.
+              We design and engineer your website with modern UI/UX and clean code so you stand out in your market. Direct developer collaboration. Built to be seen.
             </p>
 
             {/* Lead Capture Form Card */}
@@ -91,7 +91,7 @@ export function HeroStorebox({ onOpenDraftModal }: HeroStoreboxProps) {
                   type="submit"
                   className="w-full bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-sm sm:text-base py-3.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform active:scale-[0.99] flex items-center justify-center gap-2 mt-1"
                 >
-                  <span>Get My Free Website Draft</span>
+                  <span>Request a Free Website Draft</span>
                   <span aria-hidden="true">→</span>
                 </button>
               </form>
@@ -101,20 +101,14 @@ export function HeroStorebox({ onOpenDraftModal }: HeroStoreboxProps) {
                 <span>•</span>
                 <span>No upfront payment</span>
                 <span>•</span>
-                <span>Unlimited edits</span>
+                <span>Hosting &amp; domain separate</span>
               </div>
             </div>
 
-            {/* Price Strike-Through Banner */}
+            {/* Price Banner */}
             <div className="flex flex-wrap items-baseline gap-3 pt-2 max-w-xl">
-              <div className="font-body text-sm text-[#221D15]/65">
-                Traditional marketing agency:{' '}
-                <span className="line-through font-semibold text-rose-700 decoration-rose-600 decoration-2">
-                  ₹1,50,000+
-                </span>
-              </div>
-              <div className="font-label text-sm font-bold text-[#6B7D50] bg-[#6B7D50]/10 px-3 py-1 rounded-full">
-                WEBZA: Starting at ₹9,999 all-inclusive
+              <div className="font-label text-sm font-bold text-[#6B7D50] bg-[#6B7D50]/10 px-3.5 py-1.5 rounded-full">
+                Website Development: Starting at ₹9,999 (Development only)
               </div>
             </div>
           </div>

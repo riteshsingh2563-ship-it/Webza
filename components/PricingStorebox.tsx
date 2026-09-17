@@ -15,26 +15,26 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E241C] border border-white/10 shadow-sm mb-4">
             <span className="w-2 h-2 rounded-full bg-[#2BD4BD]" />
             <span className="font-label text-xs font-semibold tracking-wider text-white/80 uppercase">
-              Transparent Pricing
+              Transparent Development Pricing
             </span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#FAF7F1] tracking-tight">
-            A steal.{' '}
-            <span className="italic font-normal text-[#829762]">On purpose.</span>
+            Clear investment.{' '}
+            <span className="italic font-normal text-[#829762]">Zero hidden clauses.</span>
           </h2>
           <p className="font-body text-base sm:text-lg text-[#FAF7F1]/70 mt-4 leading-relaxed">
-            True done-for-you development at clear, accessible prices. No hidden monthly software bills. No surprises.
+            Transparent website development rates with full code ownership. Hosting and domain registration are clearly itemized and separate.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 mt-6">
             <span className="text-xs font-label bg-[#1E241C] border border-white/10 text-white/80 px-3.5 py-1.5 rounded-full">
-              <strong className="text-[#2BD4BD]">✓</strong> No contracts
+              <strong className="text-[#2BD4BD]">✓</strong> Development only pricing
             </span>
             <span className="text-xs font-label bg-[#1E241C] border border-white/10 text-white/80 px-3.5 py-1.5 rounded-full">
-              <strong className="text-[#2BD4BD]">✓</strong> 24-hour draft delivery
+              <strong className="text-[#2BD4BD]">✓</strong> Hosting &amp; domain separate
             </span>
             <span className="text-xs font-label bg-[#1E241C] border border-white/10 text-white/80 px-3.5 py-1.5 rounded-full">
-              <strong className="text-[#2BD4BD]">✓</strong> 100% satisfaction guarantee
+              <strong className="text-[#2BD4BD]">✓</strong> 100% code &amp; asset ownership
             </span>
           </div>
         </div>
@@ -49,7 +49,7 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
                   Development Silver
                 </h3>
                 <span className="text-xs font-label text-white/50 bg-white/5 px-2.5 py-1 rounded-full">
-                  Fast Flagship
+                  Website Dev
                 </span>
               </div>
 
@@ -58,45 +58,37 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
                   ₹9,999
                 </span>
                 <span className="text-xs font-body text-white/60 ml-2 font-normal">
-                  all-inclusive
+                  development only
                 </span>
               </div>
               <p className="font-body text-xs text-white/65 mb-6">
-                Ideal for studios, consultants, clinics &amp; boutique service businesses.
+                Professional responsive website engineered for businesses looking for modern online presence.
               </p>
 
               <ul className="space-y-3 font-body text-xs sm:text-sm text-white/85 mb-8">
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Working custom draft in 24 hours</span>
+                  <span>Professional responsive website</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>5-page bespoke responsive web flagship</span>
+                  <span>Modern UI/UX &amp; intentional typography</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>100% mobile-first layout with fluid gestures</span>
+                  <span>Mobile &amp; desktop optimization</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Google SEO &amp; Rich Schema markup</span>
+                  <span>Deployment setup &amp; DNS routing</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Direct WhatsApp lead capture button</span>
+                <li className="flex items-start gap-2.5 opacity-60">
+                  <span className="text-rose-400 font-bold">✕</span>
+                  <span>Admin Portal: <strong>Not Included</strong></span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Custom domain connection &amp; auto SSL</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Sub-second load speed (99+ PageSpeed)</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>1 year high-speed cloud hosting setup</span>
+                <li className="flex items-start gap-2.5 text-xs text-white/50 pt-1">
+                  <span className="text-amber-400">•</span>
+                  <span>Hosting &amp; domain separate</span>
                 </li>
               </ul>
             </div>
@@ -106,15 +98,14 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
               onClick={() => onSelectTier('Development Silver (₹9,999)')}
               className="w-full bg-white/10 hover:bg-white/20 text-white font-label font-semibold text-sm py-3.5 rounded-xl transition-colors text-center border border-white/15"
             >
-              Claim Silver Draft (24h) →
+              Request a Free Draft →
             </button>
           </div>
 
           {/* Tier 2: Gold (POPULAR / HIGHLIGHTED) */}
           <div className="rounded-2xl bg-gradient-to-b from-[#242e20] to-[#1C2419] border-2 border-[#6B7D50] p-7 sm:p-8 flex flex-col justify-between shadow-2xl relative ring-4 ring-[#6B7D50]/20 transform md:-translate-y-2">
-            {/* Most Popular Badge */}
             <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-[#6B7D50] text-white font-label font-bold text-xs uppercase tracking-wider px-4 py-1 rounded-full shadow-md">
-              Most Popular • Best Value
+              Most Popular
             </div>
 
             <div>
@@ -123,7 +114,7 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
                   Development Gold
                 </h3>
                 <span className="text-xs font-label text-[#2BD4BD] bg-[#2BD4BD]/10 border border-[#2BD4BD]/25 px-2.5 py-1 rounded-full">
-                  Complete Store &amp; AEO
+                  + Admin Portal
                 </span>
               </div>
 
@@ -132,45 +123,37 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
                   ₹12,599
                 </span>
                 <span className="text-xs font-body text-white/60 ml-2 font-normal">
-                  all-inclusive
+                  development only
                 </span>
               </div>
               <p className="font-body text-xs text-white/70 mb-6">
-                For brands that want online sales, booking engines, and AI search dominance.
+                Complete website development with custom Admin Portal for managing your website content.
               </p>
 
               <ul className="space-y-3 font-body text-xs sm:text-sm text-white/90 mb-8">
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span><strong className="text-white">Everything included in Silver Tier</strong></span>
+                  <span><strong className="text-white">Everything included in Silver</strong></span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Full E-Commerce catalog &amp; storefront</span>
+                  <span>Custom Admin Portal</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Integrated Payment Gateway (UPI, Cards, Netbanking)</span>
+                  <span>Basic website &amp; content management through panel</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>AI Engine Optimization (AEO for ChatGPT &amp; Perplexity)</span>
+                  <span>High-speed Next.js architecture</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Interactive booking desk or product order drawer</span>
+                  <span>Priority 24-hour turnaround</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Priority 24-hour turnaround guaranteed</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>WhatsApp CRM lead automation &amp; order alerts</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Unlimited revisions &amp; dedicated senior engineer</span>
+                <li className="flex items-start gap-2.5 text-xs text-white/50 pt-1">
+                  <span className="text-amber-400">•</span>
+                  <span>Hosting &amp; domain separate</span>
                 </li>
               </ul>
             </div>
@@ -180,65 +163,114 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
               onClick={() => onSelectTier('Development Gold (₹12,599)')}
               className="w-full bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-sm py-4 rounded-xl shadow-lg transition-colors text-center"
             >
-              Claim Gold Draft (24h) →
+              Request a Free Draft →
             </button>
           </div>
 
-          {/* Tier 3: Enterprise */}
+          {/* Tier 3: Separate Hosting Plans */}
           <div className="rounded-2xl bg-[#1C2219] border border-white/10 p-7 sm:p-8 flex flex-col justify-between shadow-xl relative hover:border-white/25 transition-all duration-200">
             <div>
               <div className="flex items-center justify-between">
                 <h3 className="font-heading text-2xl font-bold text-white">
-                  Enterprise Custom
+                  Hosting Options
                 </h3>
                 <span className="text-xs font-label text-white/50 bg-white/5 px-2.5 py-1 rounded-full">
-                  Custom Scope
+                  Separate Plans
                 </span>
               </div>
 
               <div className="mt-4 mb-2">
-                <span className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight">
-                  Custom
+                <span className="font-heading text-3xl font-bold text-white tracking-tight">
+                  Separate
                 </span>
                 <span className="text-xs font-body text-white/60 ml-2 font-normal">
-                  quote
+                  cloud hosting
                 </span>
               </div>
               <p className="font-body text-xs text-white/65 mb-6">
-                For multi-location retail chains, high-volume catalogs, and custom web apps.
+                Dedicated high-performance cloud hosting setup for your production site.
               </p>
 
               <ul className="space-y-3 font-body text-xs sm:text-sm text-white/85 mb-8">
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Multi-location franchise architecture</span>
+                  <span><strong>12 Months:</strong> ₹5,400</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Custom ERP / Inventory sync backend</span>
+                  <span><strong>24 Months:</strong> ₹8,500</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Enterprise SLA &amp; dedicated engineer on call</span>
+                  <span><strong>48 Months:</strong> ₹15,000</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Headless CMS &amp; editorial team workflows</span>
+                  <span>Automated SSL &amp; high-speed cloud edge</span>
                 </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-[#2BD4BD] font-bold">✓</span>
-                  <span>Custom security audits &amp; HIPAA/GDPR standards</span>
+                <li className="flex items-start gap-2.5 text-xs text-white/50 pt-1">
+                  <span className="text-amber-400">•</span>
+                  <span>Domain registration separate</span>
                 </li>
               </ul>
             </div>
 
             <button
               type="button"
-              onClick={() => onSelectTier('Enterprise Custom')}
+              onClick={() => onSelectTier('Hosting Plan Inquiry')}
               className="w-full bg-white/10 hover:bg-white/20 text-white font-label font-semibold text-sm py-3.5 rounded-xl transition-colors text-center border border-white/15"
             >
-              Schedule Enterprise Brief →
+              Inquire Hosting →
             </button>
+          </div>
+        </div>
+
+        {/* Combined Pricing Table */}
+        <div className="mt-16 bg-[#1C2219] border border-white/10 rounded-2xl p-6 sm:p-8 max-w-5xl mx-auto">
+          <div className="text-center mb-6">
+            <h3 className="font-heading text-xl sm:text-2xl font-bold text-white mb-2">
+              Development + Hosting Combined Breakdown
+            </h3>
+            <p className="font-body text-xs sm:text-sm text-white/60 max-w-xl mx-auto">
+              If you wish to bundle hosting with website development, reference the exact combined totals below. Domain registration is separate.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-left text-xs sm:text-sm font-body text-white">
+              <thead>
+                <tr className="border-b border-white/15 font-label uppercase tracking-wider text-[11px] text-white/50">
+                  <th className="py-3 px-4">Tier</th>
+                  <th className="py-3 px-4">Dev Only</th>
+                  <th className="py-3 px-4">+ 12 Mo (₹5,400)</th>
+                  <th className="py-3 px-4">+ 24 Mo (₹8,500)</th>
+                  <th className="py-3 px-4">+ 48 Mo (₹15,000)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/10">
+                <tr>
+                  <td className="py-4 px-4 font-semibold text-white">Development Silver</td>
+                  <td className="py-4 px-4 font-mono text-[#829762]">₹9,999</td>
+                  <td className="py-4 px-4 font-mono">₹15,399</td>
+                  <td className="py-4 px-4 font-mono">₹18,499</td>
+                  <td className="py-4 px-4 font-mono">₹24,999</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-semibold text-white">
+                    Development Gold <span className="text-[10px] bg-[#6B7D50] text-white px-2 py-0.5 rounded-full ml-1 font-normal">+ Admin Portal</span>
+                  </td>
+                  <td className="py-4 px-4 font-mono text-[#829762]">₹12,599</td>
+                  <td className="py-4 px-4 font-mono">₹17,999</td>
+                  <td className="py-4 px-4 font-mono">₹21,099</td>
+                  <td className="py-4 px-4 font-mono">₹27,599</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-4 pt-3 border-t border-white/10 text-[11px] font-body text-white/50 flex flex-col sm:flex-row justify-between gap-2">
+            <span>* Domain registration is separate and depends on selected extension (.com, .in, etc.) and availability.</span>
+            <span className="text-[#2BD4BD]">✓ Full code &amp; digital asset ownership</span>
           </div>
         </div>
       </div>

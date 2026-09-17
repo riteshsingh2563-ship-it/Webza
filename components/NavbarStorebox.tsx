@@ -21,10 +21,10 @@ export function NavbarStorebox({ onOpenDraftModal }: NavbarStoreboxProps) {
 
   const navLinks = [
     { label: 'How it works', href: '#how' },
-    { label: 'The Old Way', href: '#relief' },
+    { label: 'The Difference', href: '#relief' },
     { label: 'Ecommerce', href: '#sell' },
     { label: 'SEO & AEO', href: '#found' },
-    { label: 'What You Get', href: '#officeBx' },
+    { label: 'Team', href: '#founder' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'FAQ', href: '#nocatch' },
   ];
@@ -84,7 +84,7 @@ export function NavbarStorebox({ onOpenDraftModal }: NavbarStoreboxProps) {
             onClick={() => onOpenDraftModal('Development Gold (₹12,599)')}
             className="inline-flex items-center justify-center gap-2 bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
           >
-            <span>Free draft in 24h</span>
+            <span>Request a Free Draft</span>
             <span aria-hidden="true">→</span>
           </button>
         </div>

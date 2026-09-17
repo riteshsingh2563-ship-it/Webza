@@ -21,49 +21,45 @@ export function TheOldWays({ onOpenDraftModal }: TheOldWaysProps) {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold text-[#FAF7F1] tracking-tight">
             Websites shouldn’t cost{' '}
             <span className="italic font-normal text-rose-400 line-through decoration-rose-500">
-              ₹1,50₹1,50,000.
+              unreasonable markups.
             </span>{' '}
             Or your weekends.
           </h2>
           <p className="font-body text-base sm:text-lg text-[#FAF7F1]/70 mt-4">
-            Agencies charge thousands. AI builders and drag-and-drop editors charge something worse — your precious time.
+            Traditional agencies add heavy overhead. AI builders and drag-and-drop editors charge something worse — your precious time.
           </p>
         </div>
 
         {/* 3-Column Relief Matrix */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Column 1: The Traditional Agency (Shredded Invoice) */}
+          {/* Column 1: The Traditional Agency */}
           <div className="relative rounded-2xl bg-[#1C2219] border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-lg">
             <div>
               <span className="text-xs font-label font-bold tracking-wider uppercase text-rose-400 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">
                 Option 1 — Traditional Agency
               </span>
 
-              {/* Simulated Invoice Card */}
+              {/* Agency Model Card */}
               <div className="mt-6 bg-[#232B20] border border-white/10 rounded-xl p-4 font-mono text-xs text-white/80 space-y-2 relative overflow-hidden">
                 <div className="flex justify-between border-b border-white/10 pb-2 font-bold text-white">
-                  <span>INVOICE #2481</span>
-                  <span>STATUS: DUE</span>
+                  <span>AGENCY MODEL</span>
+                  <span>HEAVY OVERHEAD</span>
                 </div>
                 <div className="flex justify-between text-white/70">
-                  <span>Custom Design &amp; UI</span>
-                  <span>₹65,000</span>
+                  <span>Account Management Markups</span>
+                  <span>Extra</span>
                 </div>
                 <div className="flex justify-between text-white/70">
-                  <span>Full-Stack Development</span>
-                  <span>₹55,000</span>
+                  <span>Sales &amp; Retainer Overhead</span>
+                  <span>Extra</span>
                 </div>
                 <div className="flex justify-between text-white/70">
-                  <span>SEO &amp; Analytics Setup</span>
-                  <span>₹20,000</span>
-                </div>
-                <div className="flex justify-between text-white/70">
-                  <span>Monthly Maintenance Retainer</span>
-                  <span>₹10,000/mo</span>
+                  <span>Slow Turnaround Cycles</span>
+                  <span>Weeks/Months</span>
                 </div>
                 <div className="flex justify-between border-t border-white/20 pt-2 font-bold text-rose-400 text-sm">
-                  <span>TOTAL DUE</span>
-                  <span>₹1,50,000+</span>
+                  <span>OUTCOME</span>
+                  <span>High friction</span>
                 </div>
               </div>
 

@@ -9,51 +9,51 @@ interface ProofMarqueeProps {
 export function ProofMarquee({ onOpenDraftModal }: ProofMarqueeProps) {
   const showcaseProjects = [
     {
-      name: 'Artisan Specialty Roastery',
-      category: 'Specialty Coffee & Culinary Flagship',
-      location: 'New York / Mumbai',
-      metric: '99 PageSpeed',
-      growth: '+280% Direct Orders',
+      name: 'Sheesh Mahal',
+      category: 'Royal Dining & Luxury Hospitality',
+      location: 'Jaipur & Delhi',
+      metric: 'Bespoke Design',
+      growth: 'Interactive Menu',
       accentColor: 'from-[#2e261f] to-[#42372d]',
     },
     {
-      name: 'Apex Athletic Club',
-      category: 'Performance Studio & Membership',
-      location: 'London / Bengaluru',
-      metric: 'Sub-second Load',
-      growth: '140+ New Members',
+      name: 'Pushpanjali Heritage',
+      category: 'Boutique Resort & Suites',
+      location: 'Udaipur',
+      metric: 'Mobile-First',
+      growth: 'Direct Booking Flow',
       accentColor: 'from-[#1e2820] to-[#2b382e]',
     },
     {
-      name: 'Maison Haute Couture',
-      category: 'Luxury Fashion & Bespoke Atelier',
-      location: 'Paris / Delhi',
-      metric: 'Zero-fee Checkout',
-      growth: '3.8x Conversion Rate',
+      name: 'RK Fitness Elite',
+      category: 'Performance Athletic Club',
+      location: 'Delhi NCR',
+      metric: 'Fast Loading',
+      growth: 'Membership Portal',
       accentColor: 'from-[#2a2227] to-[#3a3038]',
     },
     {
-      name: 'Lumina Skin & Aesthetics',
-      category: 'Dermatology & Wellness Center',
-      location: 'Dubai / Mumbai',
-      metric: 'AEO Ranked #1',
-      growth: '45+ Weekly Inquiries',
+      name: 'Aura Spatial Audio',
+      category: 'Acoustic Flagship & Hardware',
+      location: 'Bengaluru',
+      metric: 'Next.js 14',
+      growth: 'Interactive Showroom',
       accentColor: 'from-[#1c2927] to-[#283b38]',
     },
     {
-      name: 'Vertex Cloud Solutions',
-      category: 'B2B Enterprise SaaS & Cloud',
-      location: 'San Francisco / Bengaluru',
-      metric: '100% Core Web Vitals',
-      growth: '₹10+ Cr Pipeline Inbound',
+      name: 'Krypton Protocol',
+      category: 'Institutional FinTech Platform',
+      location: 'Global',
+      metric: 'Sub-second Edge',
+      growth: 'Modular Components',
       accentColor: 'from-[#1c222b] to-[#263140]',
     },
     {
-      name: 'Velvet & Stone Living',
-      category: 'Interior Architecture & High-End Living',
-      location: 'Milan / Delhi',
-      metric: 'Instant WhatsApp CRM',
-      growth: '+310% Consultation Bookings',
+      name: 'Solace Goods',
+      category: 'Sustainable Goods & Atelier',
+      location: 'Mumbai',
+      metric: 'Modern UI/UX',
+      growth: 'Digital Storefront',
       accentColor: 'from-[#2b271e] to-[#3d382c]',
     },
   ];
@@ -63,10 +63,10 @@ export function ProofMarquee({ onOpenDraftModal }: ProofMarqueeProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#FAF7F1]">
-            <span className="italic font-normal text-[#829762]">150+</span> businesses
+            Crafted with <span className="italic font-normal text-[#829762]">Precision.</span>
           </div>
           <p className="font-body text-base sm:text-lg text-[#FAF7F1]/70 mt-3">
-            already run their website, store, and AI search visibility on WEBZA.
+            Modern web flagships and digital storefronts engineered for growing businesses.
           </p>
         </div>
       </div>
@@ -97,7 +97,7 @@ export function ProofMarquee({ onOpenDraftModal }: ProofMarqueeProps) {
                 </div>
 
                 <div>
-                  <div className="text-white/60 text-xs font-mono">webza.agency/showcase</div>
+                  <div className="text-white/60 text-xs font-mono">webza.agency/portfolio</div>
                   <h4 className="font-heading text-lg font-semibold text-white mt-1 group-hover:text-[#829762] transition-colors">
                     {item.name}
                   </h4>
@@ -121,8 +121,8 @@ export function ProofMarquee({ onOpenDraftModal }: ProofMarqueeProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14 sm:mt-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-white/10 text-center">
           <div className="space-y-1">
-            <div className="font-heading text-3xl sm:text-4xl font-bold text-white">150+</div>
-            <div className="font-body text-xs sm:text-sm text-white/60">businesses live</div>
+            <div className="font-heading text-3xl sm:text-4xl font-bold text-white">100%</div>
+            <div className="font-body text-xs sm:text-sm text-white/60">custom design</div>
           </div>
           <div className="space-y-1">
             <div className="font-heading text-3xl sm:text-4xl font-bold text-[#829762]">24h</div>
@@ -130,11 +130,11 @@ export function ProofMarquee({ onOpenDraftModal }: ProofMarqueeProps) {
           </div>
           <div className="space-y-1">
             <div className="font-heading text-3xl sm:text-4xl font-bold text-white">₹9,999</div>
-            <div className="font-body text-xs sm:text-sm text-white/60">all-in transparent pricing</div>
+            <div className="font-body text-xs sm:text-sm text-white/60">development starting</div>
           </div>
           <div className="space-y-1">
-            <div className="font-heading text-3xl sm:text-4xl font-bold text-[#2BD4BD]">0 hrs</div>
-            <div className="font-body text-xs sm:text-sm text-white/60">of your wasted time</div>
+            <div className="font-heading text-3xl sm:text-4xl font-bold text-[#2BD4BD]">Next.js</div>
+            <div className="font-body text-xs sm:text-sm text-white/60">modern stack</div>
           </div>
         </div>
       </div>

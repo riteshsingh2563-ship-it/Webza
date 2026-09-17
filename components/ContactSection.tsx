@@ -9,7 +9,7 @@ export const ContactSection: React.FC = () => {
     name: '',
     email: '',
     company: '',
-    budget: '₹25,000 – ₹50,000',
+    budget: 'Development Silver (₹9,999)',
     message: '',
     nda: true,
   });
@@ -54,7 +54,7 @@ export const ContactSection: React.FC = () => {
         name: '',
         email: '',
         company: '',
-        budget: '₹25,000 – ₹50,000',
+        budget: 'Development Silver (₹9,999)',
         message: '',
         nda: true,
       });
@@ -112,13 +112,6 @@ export const ContactSection: React.FC = () => {
                   >
                     hello@webza.agency
                   </a>
-                  <span className="text-neutral-500 mx-1.5">•</span>
-                  <a
-                    href="mailto:alex@webza.agency"
-                    className="text-xs font-mono text-[#8e9189] hover:text-[#6b7d50] transition-colors"
-                  >
-                    alex@webza.agency
-                  </a>
                 </div>
               </div>
 
@@ -126,10 +119,10 @@ export const ContactSection: React.FC = () => {
                 <MapPin className="w-5 h-5 text-[#6b7d50] flex-shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-xs font-mono uppercase text-white block">
-                    Presence
+                    Location
                   </strong>
                   <span className="text-xs font-mono text-[#8e9189]">
-                    San Francisco • London • Tokyo
+                    India • Serving Clients Worldwide
                   </span>
                 </div>
               </div>
@@ -169,7 +162,7 @@ export const ContactSection: React.FC = () => {
                     Inquiry Received
                   </h4>
                   <p className="font-body text-xs sm:text-sm text-[#8e9189] max-w-sm mx-auto mb-6">
-                    Thank you. Managing Partner Alex Thorne and our lead technical architect are reviewing your submission.
+                    Thank you. Founder Ritesh Singh and our development team are reviewing your submission.
                   </p>
                   <button
                     type="button"
@@ -234,10 +227,10 @@ export const ContactSection: React.FC = () => {
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-[#6b7d50] transition-colors cursor-pointer"
                       >
-                        <option value="₹9,999 – ₹25,000" className="bg-[#141713]">₹9,999 – ₹25,000 INR</option>
-                        <option value="₹25,000 – ₹50,000" className="bg-[#141713]">₹25,000 – ₹50,000 INR</option>
-                        <option value="₹50,000 – ₹1,50,000" className="bg-[#141713]">₹50,000 – ₹1,50,000 INR</option>
-                        <option value="₹1,50,000+" className="bg-[#141713]">₹1,50,000+ INR (Flagship &amp; Enterprise)</option>
+                        <option value="Development Silver (₹9,999)" className="bg-[#141713]">Development Silver (₹9,999)</option>
+                        <option value="Development Gold (₹12,599)" className="bg-[#141713]">Development Gold (₹12,599)</option>
+                        <option value="Combined Package (Dev + Hosting)" className="bg-[#141713]">Combined Package (Dev + Hosting)</option>
+                        <option value="Custom Scope / Multiple Projects" className="bg-[#141713]">Custom Scope / Multiple Projects</option>
                       </select>
                     </div>
                   </div>

@@ -31,7 +31,8 @@ export default function Home() {
         const href = anchor.getAttribute('href');
         if (href === '#leadArea' || href === '#contact' || anchor.classList.contains('fb4-btn') || anchor.closest('#stickyCta')) {
           e.preventDefault();
-          openDraftModal('Development Gold (₹12,599)');
+          const tier = anchor.getAttribute('data-tier') || 'Development Gold (₹12,599)';
+          openDraftModal(tier);
         }
       }
     };

@@ -13,7 +13,7 @@ interface FreeDraftModalProps {
 export function FreeDraftModal({
   isOpen,
   onClose,
-  initialTier = 'Development Gold (₹12,599)',
+  initialTier = 'Store (₹12,599)',
   initialBusiness = '',
   initialPhone = '',
 }: FreeDraftModalProps) {
@@ -58,7 +58,7 @@ export function FreeDraftModal({
     }
   };
 
-  const resetAndClose = () => {
+  const handleClose = () => {
     setSubmitted(false);
     onClose();
   };
@@ -73,17 +73,49 @@ export function FreeDraftModal({
         className="bg-[#FAF7F1] border border-[#221D15]/15 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative text-[#221D15] max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Close button */}
         <button
           type="button"
-          onClick={resetAndClose}
+          onClick={handleClose}
           className="absolute top-5 right-5 w-8 h-8 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-[#221D15]/70 hover:text-[#221D15] transition-colors"
           aria-label="Close modal"
         >
           ✕
         </button>
 
-        {!submitted ? (
+        {submitted ? (
+          <div className="text-center py-6 space-y-4 animate-fade-in">
+            <div className="w-16 h-16 rounded-full bg-[#0FA88F]/15 text-[#0FA88F] text-3xl font-bold flex items-center justify-center mx-auto">
+              ✓
+            </div>
+            <h3 className="font-heading text-2xl font-bold text-[#221D15]">
+              Draft Request Received!
+            </h3>
+            <p className="font-body text-sm text-[#221D15]/75 max-w-sm mx-auto leading-relaxed">
+              Thank you, <strong className="text-[#221D15]">{businessName}</strong>! Our engineering team is reviewing your details. Your custom preview link will be ready in under 24 hours.
+            </p>
+
+            <div className="pt-3 space-y-2">
+              <a
+                href={`https://wa.me/?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20b858] text-white font-label font-bold text-sm py-3.5 rounded-xl shadow-md transition-colors"
+              >
+                <span>Fast-Track on WhatsApp</span>
+                <span aria-hidden="true">💬</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={handleClose}
+                className="w-full text-xs font-label text-[#221D15]/60 hover:text-[#221D15] py-2"
+              >
+                Done and return to site
+              </button>
+            </div>
+          </div>
+        ) : (
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6B7D50]/15 text-[#4E5B38] text-xs font-label font-bold uppercase mb-3">
               <span>⚡</span>
@@ -149,13 +181,31 @@ export function FreeDraftModal({
                   className="w-full px-4 py-3 rounded-xl border border-[#221D15]/15 bg-white text-sm font-body focus:outline-none focus:border-[#6B7D50]"
                 >
                   <option value="Development Silver (₹9,999)">
-                    Development Silver — ₹9,999 (5-Page Flagship, Mobile-First, SEO)
+                    Development Silver — ₹9,999 (Development only, No Admin Portal)
                   </option>
                   <option value="Development Gold (₹12,599)">
-                    Development Gold — ₹12,599 (E-Commerce, Payments, AEO, WhatsApp CRM)
+                    Development Gold (Most Popular) — ₹12,599 (With Custom Admin Portal)
                   </option>
-                  <option value="Enterprise Custom">
-                    Enterprise Custom — Tailored Scope
+                  <option value="Development Silver + 12 Mo Hosting (₹15,399)">
+                    Development Silver + 12 Mo Hosting — ₹15,399
+                  </option>
+                  <option value="Development Silver + 24 Mo Hosting (₹18,499)">
+                    Development Silver + 24 Mo Hosting — ₹18,499
+                  </option>
+                  <option value="Development Silver + 48 Mo Hosting (₹24,999)">
+                    Development Silver + 48 Mo Hosting — ₹24,999
+                  </option>
+                  <option value="Development Gold + 12 Mo Hosting (₹17,999)">
+                    Development Gold + 12 Mo Hosting — ₹17,999
+                  </option>
+                  <option value="Development Gold + 24 Mo Hosting (₹21,099)">
+                    Development Gold + 24 Mo Hosting — ₹21,099
+                  </option>
+                  <option value="Development Gold + 48 Mo Hosting (₹27,599)">
+                    Development Gold + 48 Mo Hosting — ₹27,599
+                  </option>
+                  <option value="Custom Project Scope">
+                    Custom Project Scope — Discuss With Engineering Team
                   </option>
                 </select>
               </div>
@@ -176,38 +226,6 @@ export function FreeDraftModal({
                 <span>100% human design</span>
               </div>
             </form>
-          </div>
-        ) : (
-          <div className="text-center py-6 space-y-4 animate-fade-in">
-            <div className="w-16 h-16 rounded-full bg-[#0FA88F]/15 text-[#0FA88F] text-3xl font-bold flex items-center justify-center mx-auto">
-              ✓
-            </div>
-            <h3 className="font-heading text-2xl font-bold text-[#221D15]">
-              Draft Request Received!
-            </h3>
-            <p className="font-body text-sm text-[#221D15]/75 max-w-sm mx-auto leading-relaxed">
-              Thank you, <strong className="text-[#221D15]">{businessName}</strong>! Our engineering team is reviewing your details. Your custom preview link will be ready in under 24 hours.
-            </p>
-
-            <div className="pt-3 space-y-2">
-              <a
-                href={`https://wa.me/?text=${whatsappMessage}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20b858] text-white font-label font-bold text-sm py-3.5 rounded-xl shadow-md transition-colors"
-              >
-                <span>Fast-Track on WhatsApp</span>
-                <span aria-hidden="true">💬</span>
-              </a>
-
-              <button
-                type="button"
-                onClick={resetAndClose}
-                className="w-full text-xs font-label text-[#221D15]/60 hover:text-[#221D15] py-2"
-              >
-                Done and return to site
-              </button>
-            </div>
           </div>
         )}
       </div>

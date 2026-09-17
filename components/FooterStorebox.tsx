@@ -57,22 +57,22 @@ export function FooterStorebox({ onOpenDraftModal }: FooterStoreboxProps) {
               </li>
               <li>
                 <a href="#relief" className="hover:text-[#829762] transition-colors">
-                  The Old Way vs WEBZA
+                  The WEBZA Difference
                 </a>
               </li>
               <li>
                 <a href="#sell" className="hover:text-[#829762] transition-colors">
-                  Ecommerce &amp; 0% Fee Stores
+                  Ecommerce Stores
                 </a>
               </li>
               <li>
                 <a href="#found" className="hover:text-[#829762] transition-colors">
-                  Google SEO &amp; AI Search (AEO)
+                  Search &amp; AEO Architecture
                 </a>
               </li>
               <li>
-                <a href="#officeBx" className="hover:text-[#829762] transition-colors">
-                  Store in a Box: Full Machinery
+                <a href="#founder" className="hover:text-[#829762] transition-colors">
+                  Our Team &amp; Principles
                 </a>
               </li>
             </ul>
@@ -91,7 +91,7 @@ export function FooterStorebox({ onOpenDraftModal }: FooterStoreboxProps) {
               onClick={onOpenDraftModal}
               className="bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-colors shadow-sm block w-full text-center"
             >
-              Get Free Draft (24h) →
+              Request a Free Draft →
             </button>
             <div className="pt-2 text-xs font-body text-white/50">
               Direct developer desk: WhatsApp anytime.

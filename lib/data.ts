@@ -44,9 +44,9 @@ export const PROJECTS: Project[] = [
     solution:
       'We designed an edge-first Next.js 14 architecture with client-side Rust WebAssembly modules for instant cryptographic verification, eliminating browser thread locking.',
     results: [
-      { label: 'Throughput Speedup', value: '+340%' },
-      { label: 'Quarterly Volume', value: '$48M+' },
-      { label: 'Execution Latency', value: '12ms' },
+      { label: 'Architecture', value: 'Edge Next.js' },
+      { label: 'Engine', value: 'Rust WASM' },
+      { label: 'Type Safety', value: 'Strict TS' },
     ],
     technologies: ['Next.js 14', 'TypeScript', 'WebSockets', 'Rust WASM', 'Tailwind CSS'],
     deliverables: ['Systems Architecture', 'Trading Interface UI', 'WASM Module', 'Performance Hardening'],
@@ -61,18 +61,18 @@ export const PROJECTS: Project[] = [
     title: 'Aura Spatial Audio',
     client: 'Aura Technologies',
     year: '2026',
-    tagline: 'Photorealistic spatial computing flagship and interactive 3D configurator.',
+    tagline: 'Spatial computing flagship and interactive 3D configurator.',
     category: 'Creative Technology & 3D',
     overview:
-      'An award-winning digital flagship built to launch Aura’s spatial acoustics headset, featuring real-time WebGL audio visualization and tactile 3D customizers.',
+      'A digital flagship built for Aura’s spatial acoustics hardware, featuring real-time WebGL audio visualization and interactive 3D product customization.',
     challenge:
-      'The client needed a digital flagship that conveyed acoustic luxury and allowed full 3D material customization while preserving fluid 60fps performance on mobile devices.',
+      'The client needed a digital flagship that conveyed acoustic craft and allowed 3D material customization while preserving fluid performance across viewports.',
     solution:
-      'We engineered custom GLSL fragment shaders, compressed 3D GLTF meshes with Draco geometry decoding, and orchestrated scroll-synchronized typography reveals.',
+      'We engineered custom GLSL fragment shaders, compressed 3D GLTF meshes with Draco geometry decoding, and orchestrated scroll-synchronized typography.',
     results: [
-      { label: 'Industry Awards', value: 'Site of the Day' },
-      { label: 'Pre-Order Conversion', value: '+34%' },
-      { label: 'Mobile Framerate', value: '60 FPS' },
+      { label: '3D Graphics', value: 'WebGL & Three.js' },
+      { label: 'Optimization', value: 'Draco Compression' },
+      { label: 'Layout', value: 'Responsive 3D' },
     ],
     technologies: ['Three.js', 'WebGL / GLSL', 'Next.js 14', 'Tailwind CSS', 'Draco Mesh'],
     deliverables: ['Art Direction', '3D Configurator', 'Interactive Sound Engine', 'Global Launch Site'],
@@ -87,18 +87,18 @@ export const PROJECTS: Project[] = [
     title: 'Solace Luxury Goods',
     client: 'Solace Atelier Paris',
     year: '2026',
-    tagline: 'High-AOV headless commerce engine for sustainable European couture.',
+    tagline: 'Headless commerce engine for sustainable European couture.',
     category: 'Headless E-Commerce',
     overview:
-      'An editorial, high-speed commerce flagship designed to elevate average order value, provide localized multi-currency checkouts, and eliminate monolith performance bottlenecks.',
+      'An editorial, high-speed commerce flagship designed to provide localized multi-currency checkouts and seamless product browsing.',
     challenge:
-      'Legacy theme monoliths burdened Solace with 4-second initial loads, rigid design constraints, and high mobile cart abandonment in international markets.',
+      'Legacy theme monoliths burdened Solace with slow initial loads, rigid design constraints, and complex mobile cart flows.',
     solution:
-      'We engineered a decoupled Next.js frontend communicating with Shopify Plus via Storefront GraphQL API, combined with bespoke micro-interactions and one-click Stripe FX checkout.',
+      'We engineered a decoupled Next.js frontend communicating with Shopify Plus via Storefront GraphQL API, combined with bespoke micro-interactions and one-click checkout.',
     results: [
-      { label: 'Average Order Value', value: '+185%' },
-      { label: 'Global Load Time', value: '0.4s' },
-      { label: 'Checkout Drop-off', value: '-28%' },
+      { label: 'Frontend', value: 'Decoupled Next.js' },
+      { label: 'API Layer', value: 'GraphQL Storefront' },
+      { label: 'Checkout', value: 'Multi-Currency' },
     ],
     technologies: ['Next.js 14', 'Shopify Plus GraphQL', 'Stripe Global FX', 'Tailwind CSS'],
     deliverables: ['Headless Storefront', 'Checkout Optimization', 'Custom Cart Architecture', 'Multi-Currency Flow'],
@@ -113,18 +113,18 @@ export const PROJECTS: Project[] = [
     title: 'Verve Precision Telehealth',
     client: 'Verve Clinical Systems',
     year: '2026',
-    tagline: 'Enterprise HIPAA-compliant biometric streaming and patient telemetry.',
+    tagline: 'Enterprise clinical portal and patient telemetry dashboard.',
     category: 'Digital Product & Portal',
     overview:
-      'A secure clinical web portal enabling physicians to monitor continuous biometric feeds, schedule encrypted consultations, and manage longitudinal care pathways.',
+      'A secure clinical web portal enabling physicians to monitor continuous biometric feeds, schedule consultations, and manage patient workflows.',
     challenge:
-      'Managing high-throughput biometric data streams under strict HIPAA encryption compliance while keeping the clinician interface remarkably clean and effortless to navigate.',
+      'Managing continuous telemetry data streams under strict encryption compliance while keeping the clinician interface remarkably clean and effortless to navigate.',
     solution:
-      'We designed a component-driven dashboard utilizing Next.js 14 server components, Row-Level Security database architecture, and real-time biometric anomaly notifications.',
+      'We designed a component-driven dashboard utilizing Next.js 14 server components, Row-Level Security database architecture, and clear real-time notifications.',
     results: [
-      { label: 'Active Monthly Patients', value: '140,000+' },
-      { label: 'Uptime Reliability', value: '99.99%' },
-      { label: 'Security Audit Score', value: '100% Pass' },
+      { label: 'Architecture', value: 'Server Components' },
+      { label: 'Database', value: 'PostgreSQL & RLS' },
+      { label: 'Security', value: 'Encrypted Sessions' },
     ],
     technologies: ['Next.js 14', 'PostgreSQL', 'Supabase Auth', 'Tailwind CSS', 'Recharts'],
     deliverables: ['Clinical UX Design', 'HIPAA Data Flow', 'Real-Time Telemetry UI', 'Patient Portal'],
