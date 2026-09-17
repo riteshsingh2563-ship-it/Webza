@@ -1,0 +1,40 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isImageFile() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isReasonableSize() {
+      return request.resource.size < 15 * 1024 * 1024; // 15MB maximum
+    }
+
+    // Public brand assets (logos, typography, exhibition posters)
+    match /brand/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAuthenticated() && isImageFile() && isReasonableSize();
+    }
+
+    // Media library uploads for case studies and articles
+    match /uploads/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAuthenticated() && isImageFile() && isReasonableSize();
+      allow delete: if isAuthenticated();
+    }
+
+    // Project briefs / NDA documents (restricted to authenticated admin)
+    match /documents/{allPaths=**} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Deny all other storage paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

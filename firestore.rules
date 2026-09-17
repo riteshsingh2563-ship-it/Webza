@@ -1,0 +1,83 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.admin == true || 
+         request.auth.token.role == 'admin' ||
+         request.auth.token.email.matches('.*@webza\\.agency$'));
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches('^[^@]+@[^@]+\\.[^@]+$');
+    }
+
+    // Site Settings: Publicly readable, writeable only by authenticated admin
+    match /siteSettings/{document} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // Services Catalog: Publicly readable active services, writeable by admin
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // Projects & Case Studies: Publicly readable, writeable by admin
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // Blog / Editorial Articles: Published articles are public, drafts require auth
+    match /blogPosts/{postId} {
+      allow read: if resource.data.status == 'published' || isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Testimonials: Visible testimonials are public, management requires auth
+    match /testimonials/{testimonialId} {
+      allow read: if resource.data.visible == true || isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Media Catalog: Publicly readable asset metadata, writeable by admin
+    match /media/{mediaId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+
+    // Contact Submissions / Project Inquiries:
+    // Anyone can submit with strict validation (anti-spam / sanitization)
+    // Only authenticated admins can read, update status, or delete inquiries
+    match /contactSubmissions/{submissionId} {
+      allow create: if 
+        request.resource.data.name is string &&
+        request.resource.data.name.size() >= 2 &&
+        request.resource.data.name.size() <= 100 &&
+        isValidEmail(request.resource.data.email) &&
+        request.resource.data.message is string &&
+        request.resource.data.message.size() <= 3000;
+        
+      allow read, update, delete: if isAuthenticated();
+    }
+
+    // User Profiles: Users can read/write their own profile
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Default deny all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

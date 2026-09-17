@@ -1,0 +1,140 @@
+/* ============================================================
+   Storebox brand theme tokens — v1 (2026-07)
+   Source of truth: storebox-home-v2.html
+   Fonts (Google Fonts):
+     Fraunces:ital,opsz,wght@0,9..144,500..900;1,9..144,500..900
+     Bricolage+Grotesque:opsz,wght@12..96,400..800
+   ============================================================ */
+
+:root{
+  /* ---- typography ---- */
+  --fh:'Fraunces',Georgia,serif;                    /* display only: h1/h2/h3, big numbers.
+                                                       weight 750, letter-spacing -.015em */
+  --fb:'Bricolage Grotesque',system-ui,sans-serif;  /* everything else: body, UI, buttons */
+
+  /* ---- primary orange ramp ---- */
+  --orange-50:#FFF3EC;  --orange-100:#FFE4D2; --orange-200:#FFC8A4;
+  --orange-300:#FFA470; --orange-400:#FF8749; --orange-500:#FF6B2C;
+  --orange-600:#EE5715; --orange-700:#C6440E; --orange-800:#9C3610;
+  --orange-900:#7C2D12; --orange-950:#431407;
+
+  /* ---- brand accents ---- */
+  --a1:#FFA149;                                     /* sunset: light stop */
+  --a2:#FF6B2C;                                     /* THE brand orange (primary) */
+  --a3:#E9384D;                                     /* sunset: red stop */
+  --grad-sunset:linear-gradient(100deg,var(--a1),var(--a2) 45%,var(--a3) 90%);
+  --grad-btn:linear-gradient(100deg,var(--a1),var(--a2) 60%,#F5522F);
+  --glow:rgba(255,107,44,.4);                       /* shadow color under orange elements */
+  --amber:#FFC53D;                                  /* tiny highlights only (stars) */
+  --red:#E5484D;                                    /* errors only */
+
+  /* ---- structural constants ---- */
+  --paper:#FAF7F1;                                  /* cream canvas (also dark-mode text) */
+  --ink:#221D15;                                    /* warm near-black; text on orange fills */
+  --bg:#171310;                                     /* espresso page bg */
+  --bg2:#1E1915;                                    /* espresso alt bg */
+  --maxw:1160px;
+  --r:20px;                                         /* card radius; pills are 999px */
+}
+
+/* ---- theme scopes ----------------------------------------------------
+   Every <section> gets .lt (cream) or .dk (espresso); the page alternates.
+   Components consume ONLY the scoped vars below (--text/--muted/--line/
+   --surface/--ita/--teal) so they re-theme automatically.
+   .dkscope re-darkens a mockup (browser frame, chat UI) inside a .lt
+   section without changing the section background.
+------------------------------------------------------------------------ */
+
+.dk, .dkscope{
+  --text:#FAF7F1;
+  --muted:#A99E8F;
+  --line:rgba(250,240,225,.11);        /* hairline border */
+  --surface:rgba(250,240,225,.045);    /* card fill tint */
+  --ita:#FF8749;                       /* italic headline accent = orange-400 */
+  --teal:#2BD4BD;                      /* success / live / ticks */
+  color:var(--text);
+}
+.dk{ background:var(--bg); }
+
+.lt{
+  --text:#221D15;
+  --muted:#6E6557;
+  --line:rgba(34,29,21,.15);
+  --surface:rgba(34,29,21,.05);
+  --ita:#F0591E;                       /* deeper orange for contrast on cream */
+  --teal:#0FA88F;                      /* deeper teal for contrast on cream */
+  background:var(--paper); color:var(--text);
+}
+
+/* ---- usage rules (enforced by convention) -----------------------------
+1  Headlines: font-family var(--fh); accent words as
+   <em class="ita"> → font-style:italic; color:var(--ita).
+2  Primary button: background var(--grad-btn); color var(--ink);
+   border-radius 999px; box-shadow 0 12px 40px var(--glow).
+   Ghost button: transparent bg, 1px solid var(--line), color var(--text).
+   Ink button (on cream cards): background var(--ink), color var(--paper).
+3  Text links: var(--orange-700) on cream, var(--orange-400) on dark.
+   Never orange-500 for text below ~24px (contrast).
+4  var(--grad-sunset) is for hero headline moments and giant numbers only.
+5  Teal is the "alive" color: live dots, success ticks, #1 badges,
+   confirmations. Amber only for star ratings. Red only for errors.
+6  White (#fff) cards appear only inside .lt sections
+   (shadow: 0 20px 50px rgba(34,29,21,.1)).
+7  Dark section CTAs/forms: keep the card cream (self-scoped) so the form
+   pops; finale pattern = .dk section + cream card + ink button.
+------------------------------------------------------------------------ */
+
+/* ============================================================
+   Shared base + components — identical across every sb-mktg page.
+   Link this file, then keep only page-unique CSS inline. Load
+   order matters: this file first, then the page's own <style>,
+   so page-specific overrides (e.g. a taller .sec on one page)
+   still win via normal cascade order.
+   ============================================================ */
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:#FAF7F1;font-family:var(--fb);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{margin:0;font-family:var(--fh);letter-spacing:-.015em;line-height:1.08;font-weight:750}
+.ita{font-style:italic;color:var(--ita);font-weight:640}
+p{margin:0;line-height:1.65;color:var(--muted)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.grad{background:var(--grad-sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  padding:8px 15px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px var(--teal)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-weight:700;
+  font-size:16px;border:0;cursor:pointer;padding:15px 26px;border-radius:999px;color:var(--ink);
+  font-family:var(--fb);background:var(--grad-btn);
+  box-shadow:0 12px 40px var(--glow);transition:box-shadow .25s;will-change:transform}
+.btn:hover{box-shadow:0 18px 54px rgba(255,107,44,.6)}
+.btn.ghost{background:var(--surface);border:1.5px solid var(--line);box-shadow:none;color:var(--text)}
+.dk .btn.ghost,.dkscope .btn.ghost{border-color:rgba(250,240,225,.35)}
+.lt .btn.ghost{border-color:rgba(34,29,21,.28)}
+.btn.inkbtn{background:#221D15;color:#FAF7F1;box-shadow:0 14px 44px rgba(34,29,21,.35)}
+
+.chip{font-size:13px;font-weight:600;color:var(--text);padding:8px 14px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);display:inline-flex;align-items:center;gap:7px}
+.chip .tick{color:var(--teal);font-weight:800}
+
+.sec{padding:100px 0;position:relative}
+.sec-head{max-width:760px;margin:0 auto 52px;text-align:center}
+.sec-head h2{font-size:clamp(30px,4.4vw,48px);margin:18px 0 16px}
+.sec-head p{font-size:16.5px}
+.sec-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.sec-actions.tight{justify-content:flex-start;margin-top:20px}
+
+.grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.4;pointer-events:none}
+.blob.b1{width:520px;height:520px;background:#5A2612;top:-160px;right:-120px}
+.blob.b2{width:420px;height:420px;background:#521426;bottom:-180px;left:-140px}
+
+.rv{opacity:0}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1}}

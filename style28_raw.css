@@ -1,0 +1,247 @@
+
+/* Every real sample reviewed while building this contract included a
+   universal box-sizing:border-box reset in its own CSS — without one here,
+   any .sb-* element an author sets width/height on (most commonly
+   .sb-btn with style="width:100%" for a full-width card CTA) overflows its
+   parent by its own padding, since box-sizing isn't inherited and defaults
+   to content-box. Found via dogfooding the sb-mktg pricing-card rewrite. */
+.sb-html-content, .sb-html-content *, .sb-html-content *::before, .sb-html-content *::after {
+  box-sizing: border-box;
+}
+
+/* ========== Buttons / CTA ========== */
+.sb-html-content .sb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--sb-font-label);
+  font-size: var(--sb-size-label);
+  font-weight: var(--sb-weight-label);
+  padding: 14px 28px;
+  border-radius: var(--sb-radius-full);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, background .2s ease;
+}
+.sb-html-content .sb-btn:hover { transform: translateY(-2px); }
+
+.sb-html-content .sb-btn--primary {
+  background: var(--sb-brand);
+  color: #ffffff;
+  box-shadow: var(--sb-shadow-sm);
+}
+/* Hover darkens the SAME color via a brightness filter rather than a second
+   precomputed "--sb-brand-dark" var — matches the convention already used by
+   rendererv2's own Button component (filter: brightness() on :hover/:active). */
+.sb-html-content .sb-btn--primary:hover { filter: brightness(0.92); box-shadow: var(--sb-shadow-md); }
+
+.sb-html-content .sb-btn--secondary {
+  background: var(--sb-surface-alt);
+  color: var(--sb-ink);
+  border: 1px solid var(--sb-surface-border);
+}
+.sb-html-content .sb-btn--secondary:hover { background: var(--sb-surface); }
+
+.sb-html-content .sb-btn--outline {
+  background: transparent;
+  color: var(--sb-brand);
+  border: 1.5px solid var(--sb-brand);
+}
+.sb-html-content .sb-btn--outline:hover { background: var(--sb-brand-light); }
+
+.sb-html-content .sb-cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sb-html-content .sb-cta-row .sb-btn { flex: 1 1 200px; }
+@media (max-width: 640px) {
+  .sb-html-content .sb-cta-row { flex-direction: column; }
+  .sb-html-content .sb-cta-row .sb-btn { flex: 1 1 auto; }
+}
+
+/* Mid-content dark persuasion banner — distinct from a closing/footer CTA. */
+.sb-html-content .sb-callout--dark {
+  background: var(--sb-inverse-bg);
+  color: var(--sb-inverse-text);
+  border-radius: var(--sb-radius-lg);
+  padding: 32px 28px;
+  text-align: center;
+  margin: 40px 0;
+}
+.sb-html-content .sb-callout--dark h3,
+.sb-html-content .sb-callout--dark strong { color: inherit; }
+/* Real on-dark tiers (WCAG-checked against --sb-inverse-bg), not
+   color:inherit + opacity guesswork. See buildSbCssVars() in
+   packages/ir-utils/src/theme/cssVars.ts. */
+.sb-html-content .sb-callout--dark p { color: var(--sb-inverse-text-secondary); margin: 8px 0 20px; }
+.sb-html-content .sb-callout--dark small,
+.sb-html-content .sb-callout--dark .sb-label { color: var(--sb-inverse-text-muted); }
+/* :not(.sb-btn) matters — .sb-btn anchors set their own explicit
+   foreground/background pairing (e.g. white text on --sb-brand for
+   .sb-btn--primary) and must not be overridden by the plain-link color;
+   without this exclusion a .sb-btn--secondary (light bg, ink text) inside
+   a dark callout gets its text repainted --sb-inverse-link, which can
+   land at or near the button's own background and become unreadable. */
+.sb-html-content .sb-callout--dark a:not(.sb-btn) { color: var(--sb-inverse-link); }
+.sb-html-content .sb-callout--dark .sb-cta-row { justify-content: center; }
+/* The .sb-h1..h4/.sb-body typography classes hardcode light-surface ink by
+   design (most content sits on the light surface) — without these
+   overrides, using them inside .sb-callout--dark renders dark-on-dark and
+   is invisible. Higher specificity than the base .sb-h1 etc rules (3
+   classes vs 2), so this wins regardless of source order. */
+.sb-html-content .sb-callout--dark .sb-h1,
+.sb-html-content .sb-callout--dark .sb-h2,
+.sb-html-content .sb-callout--dark .sb-h3,
+.sb-html-content .sb-callout--dark .sb-h4 { color: var(--sb-inverse-text); }
+.sb-html-content .sb-callout--dark .sb-body { color: var(--sb-inverse-text-secondary); }
+
+/* ========== Layout / containers ========== */
+.sb-html-content .sb-card {
+  background: var(--sb-surface);
+  border: 1px solid var(--sb-surface-border);
+  border-radius: var(--sb-radius-md);
+  padding: 24px 26px;
+}
+.sb-html-content .sb-card--alt { background: var(--sb-surface-alt); }
+
+/* The specific "Also Read" cross-link recipe seen repeatedly in real content. */
+.sb-html-content .sb-also-read {
+  border-left: 4px solid var(--sb-brand);
+  background: var(--sb-surface-alt);
+  border-radius: 0 var(--sb-radius-md) var(--sb-radius-md) 0;
+  padding: 16px 20px;
+  margin: 24px 0;
+}
+.sb-html-content .sb-also-read-label {
+  font-family: var(--sb-font-label);
+  font-size: var(--sb-size-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--sb-ink-muted);
+  margin-bottom: 8px;
+}
+.sb-html-content .sb-also-read a { color: var(--sb-link); font-weight: 600; text-decoration: underline; }
+
+.sb-html-content .sb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sb-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sb-brand-dark);
+  background: var(--sb-brand-light);
+  padding: 5px 12px;
+  border-radius: var(--sb-radius-full);
+}
+
+.sb-html-content .sb-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.sb-html-content .sb-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 760px) {
+  .sb-html-content .sb-grid-2,
+  .sb-html-content .sb-grid-3 { grid-template-columns: 1fr; }
+}
+
+/* ========== Typography ========== */
+.sb-html-content .sb-h1 {
+  font-family: var(--sb-font-h1); font-size: var(--sb-size-h1); font-weight: var(--sb-weight-h1);
+  color: var(--sb-ink); line-height: 1.2; margin: 0 0 20px;
+}
+.sb-html-content .sb-h2 {
+  font-family: var(--sb-font-h2); font-size: var(--sb-size-h2); font-weight: var(--sb-weight-h2);
+  color: var(--sb-ink); line-height: 1.25; margin: 40px 0 16px;
+}
+.sb-html-content .sb-h3 {
+  font-family: var(--sb-font-h3); font-size: var(--sb-size-h3); font-weight: var(--sb-weight-h3);
+  color: var(--sb-ink); line-height: 1.3; margin: 32px 0 12px;
+}
+.sb-html-content .sb-h4 {
+  font-family: var(--sb-font-h4); font-size: var(--sb-size-h4); font-weight: var(--sb-weight-h4);
+  color: var(--sb-ink); line-height: 1.35; margin: 24px 0 10px;
+}
+.sb-html-content .sb-body {
+  font-family: var(--sb-font-body); font-size: var(--sb-size-body); font-weight: var(--sb-weight-body);
+  color: var(--sb-ink-secondary); line-height: 1.75; margin: 0 0 16px;
+}
+.sb-html-content .sb-label {
+  font-family: var(--sb-font-label); font-size: var(--sb-size-label); font-weight: var(--sb-weight-label);
+  color: var(--sb-ink-muted); text-transform: uppercase; letter-spacing: .05em;
+}
+.sb-html-content .sb-blockquote {
+  border-left: 4px solid var(--sb-brand);
+  margin: 32px 0;
+  padding: 4px 0 4px 24px;
+  font-family: var(--sb-font-body);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--sb-ink-secondary);
+  line-height: 1.6;
+}
+
+/* ========== Data / content display ========== */
+/* Wrap .sb-table in a .sb-table-wrap div for horizontal scroll on mobile
+   instead of squeezing columns unreadably. */
+.sb-html-content .sb-table-wrap { overflow-x: auto; margin: 26px 0; }
+.sb-html-content .sb-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--sb-surface-border);
+  border-radius: var(--sb-radius-md);
+  overflow: hidden;
+  font-family: var(--sb-font-body);
+  font-size: 14px;
+}
+.sb-html-content .sb-table thead tr { background: var(--sb-inverse-bg); }
+.sb-html-content .sb-table thead th {
+  color: var(--sb-inverse-text);
+  padding: 14px 18px;
+  text-align: left;
+  font-family: var(--sb-font-label);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: .03em;
+}
+.sb-html-content .sb-table tbody tr:nth-child(even) { background: var(--sb-surface-alt); }
+.sb-html-content .sb-table tbody td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--sb-surface-border);
+  color: var(--sb-ink-secondary);
+}
+.sb-html-content .sb-table tbody tr:last-child td { border-bottom: none; }
+.sb-html-content .sb-table td.is-good { color: var(--sb-green); font-weight: 600; }
+
+.sb-html-content .sb-stat-row { display: flex; gap: 28px; flex-wrap: wrap; }
+.sb-html-content .sb-stat { display: flex; flex-direction: column; }
+.sb-html-content .sb-stat-num {
+  font-family: var(--sb-font-h2); font-size: 26px; font-weight: 800; color: var(--sb-brand); line-height: 1;
+}
+.sb-html-content .sb-stat-label {
+  font-family: var(--sb-font-label); font-size: 11px; color: var(--sb-ink-muted);
+  text-transform: uppercase; letter-spacing: .05em; margin-top: 4px;
+}
+
+.sb-html-content .sb-checklist {
+  list-style: none; padding: 0; margin: 20px 0; display: flex; flex-direction: column; gap: 12px;
+}
+.sb-html-content .sb-checklist-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-family: var(--sb-font-body); font-size: 15px; color: var(--sb-ink-secondary); line-height: 1.6;
+}
+.sb-html-content .sb-checklist-item::before {
+  content: '\2713'; flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; background: var(--sb-green-light); color: var(--sb-green);
+}
+.sb-html-content .sb-checklist-item.is-warn::before { content: '!'; background: var(--sb-amber-light); color: var(--sb-amber); }
+
+/* ========== Media ========== */
+.sb-html-content .sb-figure { margin: 28px auto; max-width: 640px; text-align: center; }
+.sb-html-content .sb-figure img { width: 100%; height: auto; border-radius: var(--sb-radius-md); display: block; }
+.sb-html-content .sb-caption {
+  font-family: var(--sb-font-label); font-size: 13px; color: var(--sb-ink-muted); line-height: 1.5; margin-top: 10px;
+}
+.sb-html-content .sb-caption-credit { font-size: 11px; opacity: .7; }
