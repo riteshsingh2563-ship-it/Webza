@@ -8,10 +8,41 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About — WEBZA | Built To Be Seen',
-  description: 'Learn about WEBZA: our leadership, principles, and bespoke web engineering philosophy.',
+  description: 'Learn about WEBZA: our leadership, core team, principles, and bespoke web engineering philosophy.',
 };
 
 export default function AboutPage() {
+  const team = [
+    {
+      name: 'Ritesh Singh',
+      role: 'Founder & Lead Architect',
+      image: '/brand/ritesh-square.webp',
+      badge: 'Founder',
+      bio: 'Leads web engineering, full-stack architecture, and technical platform execution at WEBZA.',
+    },
+    {
+      name: 'Priyanshu Patel',
+      role: 'Co-Founder & Client Operations',
+      image: '/brand/priyanshu-square.webp',
+      badge: 'Co-Founder',
+      bio: 'Manages client onboarding, communication channels, and milestone synchronization.',
+    },
+    {
+      name: 'Jatin Sahu',
+      role: 'Frontend & UI Engineer',
+      image: '/brand/jatin-square.webp',
+      badge: 'Engineering',
+      bio: 'Engineers interactive UI components, responsive layout systems, and modern styling.',
+    },
+    {
+      name: 'Ayush Verma',
+      role: 'Research & Growth Strategy',
+      image: '/brand/ayush-square.webp',
+      badge: 'Growth',
+      bio: 'Specializes in competitor analysis, digital brand positioning, and client outreach.',
+    },
+  ];
+
   const principles = [
     {
       title: 'Distinction Over Generic Templates',
@@ -46,24 +77,24 @@ export default function AboutPage() {
         </div>
 
         {/* Narrative */}
-        <div className="max-w-3xl mb-24 space-y-6 text-[#8e9189] font-body text-base sm:text-lg leading-relaxed">
+        <div className="max-w-3xl mb-20 space-y-6 text-[#8e9189] font-body text-base sm:text-lg leading-relaxed">
           <h2 className="font-display text-2xl sm:text-4xl font-bold uppercase tracking-tight text-white leading-tight">
             CRAFTED WITH PRECISION AND CLARITY.
           </h2>
           <p>
-            Founded and led by <strong>Ritesh Singh</strong>, WEBZA exists to provide businesses with high-performing, beautifully crafted websites without bloated agency overhead or rigid template restrictions.
+            Founded by <strong>Ritesh Singh</strong>, WEBZA exists to provide businesses with high-performing, beautifully crafted websites without bloated agency overhead or rigid template restrictions.
           </p>
           <p>
-            We operate with a direct, engineer-first approach. Every project is engineered directly with modern web standards, sub-second performance, mobile-first design, and clean Next.js architecture.
+            We operate as a focused multidisciplinary collective covering development, client communication, and growth. Every project is engineered directly with modern web standards, sub-second performance, mobile-first design, and clean Next.js architecture.
           </p>
         </div>
 
         {/* Founder & Leadership Spotlight */}
-        <div className="mb-24">
+        <div className="mb-20">
           <span className="text-xs font-mono uppercase tracking-[0.3em] text-[#6b7d50] block mb-4">
             LEADERSHIP
           </span>
-          <h3 className="font-display text-2xl sm:text-4xl font-bold uppercase tracking-tight text-white mb-12">
+          <h3 className="font-display text-2xl sm:text-4xl font-bold uppercase tracking-tight text-white mb-10">
             THE BUILDER BEHIND WEBZA
           </h3>
 
@@ -149,6 +180,49 @@ export default function AboutPage() {
           </div>
         </div>
 
+        {/* 4-Member Full Team Grid */}
+        <div className="mb-24">
+          <span className="text-xs font-mono uppercase tracking-[0.3em] text-[#6b7d50] block mb-4">
+            OUR TEAM
+          </span>
+          <h3 className="font-display text-2xl sm:text-4xl font-bold uppercase tracking-tight text-white mb-10">
+            THE PEOPLE BEHIND WEBZA
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className="p-6 rounded-2xl bg-[#111411] border border-white/10 flex flex-col justify-between text-center hover:border-white/20 transition-all duration-200 group hover:-translate-y-1"
+              >
+                <div>
+                  <div className="relative w-28 h-28 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-[#6b7d50]/30 shadow-lg bg-[#181d17]">
+                    <Image
+                      src={member.image}
+                      alt={`${member.name} — ${member.role}`}
+                      width={300}
+                      height={300}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="inline-block px-2.5 py-0.5 rounded-full bg-[#6b7d50]/15 text-[#829762] font-mono text-[10px] font-bold uppercase tracking-wider mb-2">
+                    {member.badge}
+                  </div>
+                  <h4 className="font-display text-lg font-bold uppercase text-white mb-1">
+                    {member.name}
+                  </h4>
+                  <div className="font-mono text-xs text-[#6b7d50] uppercase tracking-wider mb-3">
+                    {member.role}
+                  </div>
+                  <p className="font-body text-xs sm:text-sm text-[#8e9189] leading-relaxed">
+                    {member.bio}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* 3 Principles */}
         <div className="mb-24">
           <span className="text-xs font-mono uppercase tracking-[0.3em] text-[#6b7d50] block mb-4">
@@ -180,7 +254,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* CTA Strip */}
+        {/* Bottom CTA Banner */}
         <div className="p-8 sm:p-12 rounded-2xl bg-[#111411] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="font-display text-2xl font-bold uppercase text-white mb-2">

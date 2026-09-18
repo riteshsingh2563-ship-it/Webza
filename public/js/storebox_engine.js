@@ -142,6 +142,14 @@ window.initStoreboxEngine = function() {
           gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', overwrite: true });
         }
       });
+      [$('#fb3'), $('#fb4')].filter(Boolean).forEach((el) => {
+        if (
+          el.getBoundingClientRect().top < limit &&
+          (getComputedStyle(el).opacity === '0' || el.style.opacity === '0')
+        ) {
+          gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', overwrite: true });
+        }
+      });
       ScrollTrigger.getAll().forEach((st) => {
         if (st.vars.once && st.vars.onEnter && st.progress === 1) {
           const f = st.vars.onEnter;
@@ -407,7 +415,7 @@ window.initStoreboxEngine = function() {
       },
     });
 
-    /* Bring Anything Converging Animation */
+    /* Bring Anything Converging Animation - Smooth entrance without scroll hijacking */
     (function bring() {
       const box = $('#bringBox');
       if (!box) return;
@@ -415,33 +423,41 @@ window.initStoreboxEngine = function() {
         const r = el.getBoundingClientRect();
         return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
       };
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '#bring',
-          start: 'top top',
-          end: '+=130%',
-          pin: true,
-          scrub: 0.75,
-          invalidateOnRefresh: true,
-        },
+
+      let animated = false;
+      const playBring = () => {
+        if (animated) return;
+        animated = true;
+        const tl = gsap.timeline();
+        $$('.src-chip').forEach((chip, i) => {
+          tl.to(
+            chip,
+            {
+              x: () => center(box).x - center(chip).x + Number(gsap.getProperty(chip, 'x')),
+              y: () => center(box).y - center(chip).y + Number(gsap.getProperty(chip, 'y')),
+              scale: 0.25,
+              opacity: 0,
+              ease: 'power2.in',
+              duration: 0.5,
+            },
+            i * 0.12
+          );
+        });
+        tl.fromTo(box, { scale: 1 }, { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1, ease: 'power2.out' }, '>-0.1')
+          .fromTo('#siteOut', { y: 40, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: 'back.out(1.5)' }, '>');
+      };
+
+      ScrollTrigger.create({
+        trigger: '#bring',
+        start: 'top 75%',
+        once: true,
+        onEnter: playBring,
       });
-      tl.to({}, { duration: 0.7 });
-      $$('.src-chip').forEach((chip, i) => {
-        tl.to(
-          chip,
-          {
-            x: () => center(box).x - center(chip).x + Number(gsap.getProperty(chip, 'x')),
-            y: () => center(box).y - center(chip).y + Number(gsap.getProperty(chip, 'y')),
-            scale: 0.25,
-            opacity: 0,
-            ease: 'power2.in',
-            duration: 0.6,
-          },
-          i * 0.18
-        );
-      });
-      tl.fromTo(box, { scale: 1 }, { scale: 1.08, duration: 0.12, yoyo: true, repeat: 1, ease: 'power2.out' }, '>-0.1')
-        .fromTo('#siteOut', { y: 70, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.5)' }, '>');
+
+      const bEl = $('#bring');
+      if (bEl && bEl.getBoundingClientRect().top < window.innerHeight * 0.85) {
+        playBring();
+      }
     })();
 
     /* Pricing Cards Fan-In */
@@ -545,172 +561,69 @@ window.initStoreboxEngine = function() {
         else startIdle();
       }
 
-      if (IS_MOBILE) {
-        const hf = document.getElementById('heroFilm');
-        if (hf) hf.classList.add('flat');
+      const hf = document.getElementById('heroFilm');
+      if (hf) hf.classList.add('flat');
 
-        const blocks = [$('#fb1'), $('#phoneWrap'), $('#fb3'), $('#fb4')].filter(Boolean);
-        gsap.set(blocks, { opacity: 0, y: 26 });
-        gsap.set('.hline > span', { yPercent: 115 });
-        gsap.set('.pchar', { opacity: 0, y: -50 });
-        gsap.set('.serious', { opacity: 0 });
-        gsap.set('#fb4 .chip', { opacity: 0, y: 12, scale: 0.7 });
-        gsap.set('.fb4-btn', { opacity: 0, y: 12 });
+      const blocks = [$('#fb1'), $('#phoneWrap'), $('#fb3'), $('#fb4')].filter(Boolean);
+      gsap.set(blocks, { opacity: 0, y: 20 });
+      gsap.set('.hline > span', { yPercent: 115 });
+      gsap.set('.pchar', { opacity: 0, y: -30 });
+      gsap.set('.serious', { opacity: 0 });
+      gsap.set('#fb4 .chip', { opacity: 0, y: 12, scale: 0.8 });
+      gsap.set('.fb4-btn', { opacity: 0, y: 12 });
 
-        ScrollTrigger.batch(blocks, {
-          start: 'top 86%',
-          onEnter: (group) =>
-            group.forEach((el) => {
-              gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', overwrite: true });
-              if (el.id === 'fb1') {
-                gsap.to('.hline > span', { yPercent: 0, duration: 0.7, ease: 'power3.out', stagger: 0.1, delay: 0.1 });
-              }
-              if (el.id === 'fb3') {
-                gsap.to('#buildSent .w', {
-                  color: (i, t) => (t.classList.contains('hl') ? '#6B7D50' : '#221D15'),
-                  stagger: 0.1,
-                  duration: 0.15,
-                  ease: 'none',
-                  delay: 0.2,
-                });
-              }
-              if (el.id === 'fb4') {
-                gsap.timeline({ delay: 0.15 })
-                  .to('.pchar', { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: 'bounce.out' })
-                  .to('.serious', { opacity: 1, duration: 0.2 }, '-=.15')
-                  .to('#fb4 .chip', { opacity: 1, y: 0, scale: 1, duration: 0.25, stagger: 0.07, ease: 'back.out(2)' }, '-=.05')
-                  .to('.fb4-btn', { opacity: 1, y: 0, duration: 0.25 }, '-=.05')
-                  .add(alignPriceGradient);
-              }
-            }),
-        });
-        return;
-      }
-
-      /* Desktop Pin & Morph */
-      const browser = $('#miniBrowser');
-      if (!browser) return;
-
-      gsap.from('.hline > span', { yPercent: 115, duration: 0.9, ease: 'power3.out', stagger: 0.12, delay: 0.2 });
-      gsap.from(['#fb1 .eyebrow', '#fb1 .hero-proofline'], {
-        opacity: 0,
-        y: 18,
-        duration: 0.7,
-        ease: 'power3.out',
-        stagger: 0.15,
-        delay: 0.7,
+      // Immediate entrance for above-the-fold hero elements
+      requestAnimationFrame(() => {
+        const fb1 = $('#fb1');
+        if (fb1) {
+          gsap.to(fb1, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' });
+          gsap.to('.hline > span', { yPercent: 0, duration: 0.75, ease: 'power3.out', stagger: 0.1, delay: 0.1 });
+          gsap.to(['#fb1 .eyebrow', '#fb1 .hero-proofline'], { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.1, delay: 0.3 });
+        }
+        const pw = $('#phoneWrap');
+        if (pw) {
+          gsap.to(pw, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.35 });
+        }
       });
-      gsap.from('#phoneWrap', { opacity: 0, y: 40, duration: 0.9, ease: 'power3.out', delay: 0.5 });
 
-      const VW = () => window.innerWidth || document.documentElement.clientWidth || 1200;
-      const VH = () => window.innerHeight || document.documentElement.clientHeight || 800;
-      const BW = () => Math.min(520, VW() * 0.88);
-      const PW = () => Math.min(258, VW() * 0.6);
-      const PH = () => Math.min(520, VH() * 0.62);
-
-      const natH = () => {
-        const prev = browser.style.height;
-        browser.style.height = 'auto';
-        const h = browser.offsetHeight || 440;
-        browser.style.height = prev;
-        return Math.max(h, 420);
+      // Smooth and reliable scroll reveals for hero blocks fb3 and fb4
+      const revealHeroBlock = (el) => {
+        if (!el || el.dataset.revealed === 'true') return;
+        el.dataset.revealed = 'true';
+        gsap.to(el, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', overwrite: true });
+        if (el.id === 'fb3') {
+          gsap.to('#buildSent .w', {
+            color: (i, t) => (t.classList.contains('hl') ? '#6B7D50' : '#221D15'),
+            stagger: 0.06,
+            duration: 0.15,
+            ease: 'none',
+            delay: 0.1,
+          });
+        }
+        if (el.id === 'fb4') {
+          gsap.timeline({ delay: 0.1 })
+            .to('.pchar', { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'back.out(1.6)' })
+            .to('.serious', { opacity: 1, duration: 0.2 }, '-=.1')
+            .to('#fb4 .chip', { opacity: 1, y: 0, scale: 1, duration: 0.25, stagger: 0.06, ease: 'back.out(2)' }, '-=.05')
+            .to('.fb4-btn', { opacity: 1, y: 0, duration: 0.25 }, '-=.05')
+            .add(alignPriceGradient);
+        }
       };
 
-      let bw0 = BW(),
-        nh0 = natH(),
-        pw0 = PW(),
-        ph0 = PH();
-      const getBW0 = () => bw0,
-        getNH0 = () => nh0,
-        getPW0 = () => pw0,
-        getPH0 = () => ph0;
-
-      gsap.set(browser, { height: nh0 });
-
-      const hint = $('#scrollHint');
-      const tl = gsap.timeline({
-        defaults: { ease: 'power2.inOut' },
-        scrollTrigger: {
-          trigger: '#film',
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 0.75,
-          pin: '#filmStage',
-          onUpdate: (self) => {
-            if (hint) hint.classList.toggle('gone', self.progress > 0.04);
-          },
-          onLeaveBack: () => {
-            tl.progress(0);
-            gsap.set('#fb1', { clearProps: 'opacity,y' });
-            gsap.set('.hline > span', { clearProps: 'transform' });
-            gsap.set('#phoneWrap', { clearProps: 'opacity,scale,y,top' });
-          },
-        },
+      [$('#fb3'), $('#fb4')].filter(Boolean).forEach((el) => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 88%',
+          once: true,
+          onEnter: () => revealHeroBlock(el),
+        });
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+          revealHeroBlock(el);
+        }
       });
 
-      tl.addLabel('morph')
-        .to('#fb1', { opacity: 0, y: -36, duration: 0.3 }, 'morph')
-        .fromTo('#phoneWrap', { top: '68%' }, { top: '50%', duration: 0.9, immediateRender: false }, 'morph')
-        .fromTo(
-          browser,
-          { width: getBW0, height: getNH0, borderRadius: 18 },
-          { width: getPW0, height: getPH0, borderRadius: 38, duration: 1, ease: 'power3.inOut', immediateRender: false },
-          'morph'
-        )
-        .to('#browserBar', { height: 0, opacity: 0, paddingTop: 0, paddingBottom: 0, duration: 0.5 }, 'morph+=.15')
-        .to('#notch', { opacity: 1, duration: 0.25 }, 'morph+=.6')
-        .fromTo('#fb2cap', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3 }, 'morph+=.35')
-        .to({}, { duration: 0.25 })
-        .addLabel('sent')
-        .to('#fb2cap', { opacity: 0, duration: 0.2 }, 'sent')
-        .to('#phoneWrap', { opacity: 0, scale: 0.7, y: -60, duration: 0.5 }, 'sent')
-        .fromTo('#fb3', { opacity: 0 }, { opacity: 1, duration: 0.25 }, 'sent+=.2')
-        .to(
-          '#buildSent .w',
-          {
-            color: (i, t) => (t.classList.contains('hl') ? '#6B7D50' : '#221D15'),
-            stagger: 0.12,
-            duration: 0.12,
-            ease: 'none',
-          },
-          'sent+=.35'
-        )
-        .to({}, { duration: 0.25 })
-        .addLabel('price')
-        .to('#fb3', { opacity: 0, y: -26, duration: 0.3 }, 'price')
-        .fromTo('#fb4', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 'price+=.1')
-        .fromTo('.agency-strike', { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.3 }, 'price+=.15')
-        .fromTo(
-          '.pchar',
-          { opacity: 0, y: -170 },
-          { opacity: 1, y: 0, duration: 0.55, stagger: 0.13, ease: 'bounce.out' },
-          'price+=.35'
-        )
-        .fromTo('.serious', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 'price+=.75')
-        .fromTo(
-          '#fb4 .chip',
-          { opacity: 0, y: 16, scale: 0.7 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.25, stagger: 0.07, ease: 'back.out(2)' },
-          'price+=.85'
-        )
-        .fromTo('.fb4-btn', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.25 }, 'price+=1.0')
-        .add(alignPriceGradient)
-        .to({}, { duration: 0.6 });
-
       window.__filmFix = () => {
-        const p = tl.progress();
-        tl.progress(0);
-        gsap.set(browser, { clearProps: 'width,height,borderRadius' });
-        gsap.set('#phoneWrap', { clearProps: 'top,opacity,scale,x,y' });
-        gsap.set(['#fb1', '#fb2cap', '#fb3', '#fb4'], { clearProps: 'opacity,y' });
-        bw0 = BW();
-        nh0 = natH();
-        pw0 = PW();
-        ph0 = PH();
-        gsap.set(browser, { height: nh0 });
-        tl.invalidate();
         ScrollTrigger.refresh();
-        tl.progress(p);
       };
     })();
   } else {
