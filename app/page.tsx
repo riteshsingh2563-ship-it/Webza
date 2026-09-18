@@ -13,7 +13,7 @@ export default function Home() {
   const [selectedTier, setSelectedTier] = useState('Development Gold (₹12,599)');
 
   const openDraftModal = (tier?: string) => {
-    if (tier) setSelectedTier(tier);
+    if (tier && typeof tier === 'string') setSelectedTier(tier);
     setIsDraftModalOpen(true);
   };
 
@@ -21,19 +21,34 @@ export default function Home() {
     setIsDraftModalOpen(false);
   };
 
-  // Intercept any link pointing to #leadArea or #contact to open the modal
+  // Intercept any link or button pointing to #leadArea, draft, or demo to open the modal
   useEffect(() => {
     const handleGlobalClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
-      const anchor = target.closest('a') || target.closest('button');
-      if (anchor) {
-        const href = anchor.getAttribute('href');
-        if (href === '#leadArea' || href === '#contact' || anchor.classList.contains('fb4-btn') || anchor.closest('#stickyCta')) {
-          e.preventDefault();
-          const tier = anchor.getAttribute('data-tier') || 'Development Gold (₹12,599)';
-          openDraftModal(tier);
-        }
+      const anchor = (target.closest('a') || target.closest('button')) as HTMLElement | null;
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      const text = (anchor.textContent || '').trim().toLowerCase();
+      const isDraftTarget =
+        href === '#leadArea' ||
+        href === '#contact' ||
+        href === '#draft' ||
+        href === '#demo' ||
+        anchor.classList.contains('fb4-btn') ||
+        Boolean(anchor.closest('#stickyCta')) ||
+        anchor.hasAttribute('data-draft-modal') ||
+        text.includes('free draft') ||
+        text.includes('request a free draft') ||
+        text.includes('free demo') ||
+        text.includes('claim your free');
+
+      if (isDraftTarget && (!href || href.startsWith('#'))) {
+        e.preventDefault();
+        e.stopPropagation();
+        const tier = anchor.getAttribute('data-tier') || 'Development Gold (₹12,599)';
+        openDraftModal(tier);
       }
     };
 
@@ -50,7 +65,7 @@ export default function Home() {
       <div className="grain" aria-hidden="true" />
 
       {/* 02: Sticky Header Navigation */}
-      <NavbarStorebox onOpenDraftModal={() => openDraftModal()} />
+      <NavbarStorebox onOpenDraftModal={openDraftModal} />
 
       {/* 03: The 1:1 Exact Storebox Raw Page Sections */}
       <main id="main-content" role="main">
@@ -58,7 +73,7 @@ export default function Home() {
       </main>
 
       {/* 04: Editorial Footer */}
-      <FooterStorebox onOpenDraftModal={() => openDraftModal()} />
+      <FooterStorebox onOpenDraftModal={openDraftModal} />
 
       {/* 05: High-Converting Free Draft Modal */}
       <FreeDraftModal

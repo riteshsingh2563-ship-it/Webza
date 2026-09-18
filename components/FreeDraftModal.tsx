@@ -13,15 +13,18 @@ interface FreeDraftModalProps {
 export function FreeDraftModal({
   isOpen,
   onClose,
-  initialTier = 'Store (₹12,599)',
+  initialTier = 'Development Gold (₹12,599)',
   initialBusiness = '',
   initialPhone = '',
 }: FreeDraftModalProps) {
   const [businessName, setBusinessName] = useState(initialBusiness);
   const [phone, setPhone] = useState(initialPhone);
+  const [email, setEmail] = useState('');
   const [linkOrNotes, setLinkOrNotes] = useState('');
   const [selectedTier, setSelectedTier] = useState(initialTier);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   // Sync initial props
   React.useEffect(() => {
@@ -32,39 +35,48 @@ export function FreeDraftModal({
 
   if (!isOpen) return null;
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
 
     try {
-      await fetch('/api/send-email', {
+      const res = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           business: businessName,
+          name: businessName,
           phone,
+          email,
           tier: selectedTier,
           message: linkOrNotes,
           type: 'draft',
         }),
       });
-    } catch (err) {
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        console.warn('Resend email dispatch error:', errorData);
+      }
+      setSubmitted(true);
+    } catch (err: any) {
       console.warn('Resend email dispatch error:', err);
+      // Still show submitted so user gets the WhatsApp fast-track option
+      setSubmitted(true);
     } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
     }
   };
 
   const handleClose = () => {
     setSubmitted(false);
+    setSubmitError('');
     onClose();
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello WEBZA! I'd like to request my free 24-hour website draft.\n\nBusiness: ${businessName}\nWhatsApp: ${phone}\nPackage: ${selectedTier}\nDetails/Link: ${linkOrNotes || 'None'}`
+    `Hello WEBZA! I'd like to request my free 24-hour website draft.\n\nBusiness: ${businessName}\nWhatsApp: ${phone}\nEmail: ${email || 'Not provided'}\nPackage: ${selectedTier}\nDetails/Link: ${linkOrNotes || 'None'}`
   );
 
   return (
@@ -154,6 +166,19 @@ export function FreeDraftModal({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Where should we send your private preview link?"
+                  className="w-full px-4 py-3 rounded-xl border border-[#221D15]/15 bg-white text-sm font-body focus:outline-none focus:border-[#6B7D50]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-label font-bold text-[#221D15] mb-1">
+                  Email Address (Optional)
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Where can we email design mockups and invoices?"
                   className="w-full px-4 py-3 rounded-xl border border-[#221D15]/15 bg-white text-sm font-body focus:outline-none focus:border-[#6B7D50]"
                 />
               </div>

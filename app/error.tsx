@@ -40,20 +40,30 @@ export default function GlobalError({
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
-            onClick={() => reset()}
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.location.href = '/';
+              } else {
+                reset();
+              }
+            }}
             className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-[#6b7d50] hover:bg-[#829762] text-[#090a09] font-display text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-colors"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Reinitialize View</span>
           </button>
 
-          <Link
-            href="/"
+          <button
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                window.location.href = '/';
+              }
+            }}
             className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-white font-mono text-xs flex items-center justify-center gap-2 border border-white/10 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Studio Home</span>
-          </Link>
+          </button>
         </div>
       </div>
     </div>

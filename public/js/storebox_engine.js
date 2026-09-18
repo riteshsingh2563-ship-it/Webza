@@ -1,5 +1,26 @@
-if (!window.__sbHomeHeroScriptRan) {
-  window.__sbHomeHeroScriptRan = true;
+window.initStoreboxEngine = function() {
+  if (typeof window === 'undefined' || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    return;
+  }
+
+  /* Clean up prior ScrollTrigger instances & tweens before re-binding to current live DOM */
+  try {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+    gsap.killTweensOf('*');
+  } catch (e) {}
+
+  /* Clean up prior Lenis instance & ticker */
+  if (window.__lenis) {
+    try {
+      window.__lenis.destroy();
+    } catch (e) {}
+    window.__lenis = null;
+  }
+  if (window.__lenisTicker) {
+    gsap.ticker.remove(window.__lenisTicker);
+    window.__lenisTicker = null;
+  }
+
   gsap.registerPlugin(ScrollTrigger);
 
   /* Force 3D hardware acceleration for tear-free, 120fps compositor transforms */
@@ -13,7 +34,7 @@ if (!window.__sbHomeHeroScriptRan) {
   ScrollTrigger.config({ ignoreMobileResize: true });
 
   const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const IS_MOBILE = window.matchMedia('(max-width:920px)').matches;
+  const IS_MOBILE = window.matchMedia('(max-width:920px)').matches || ('ontouchstart' in window);
 
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => gsap.utils.toArray(s);
@@ -74,45 +95,52 @@ if (!window.__sbHomeHeroScriptRan) {
   })();
 
   if (!RM) {
-    /* Buttery smooth Lenis scroll */
-    if (window.Lenis) {
-      const lenis = new Lenis({
-        duration: 1.15,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        syncTouch: false,
-        wheelMultiplier: 0.95,
-      });
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
+    /* Buttery smooth Lenis scroll — Desktop pointer only, preserving 120Hz native touch on mobile */
+    if (!IS_MOBILE && window.Lenis) {
+      try {
+        const lenis = new Lenis({
+          duration: 1.15,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          syncTouch: false,
+          wheelMultiplier: 0.95,
+        });
+        window.__lenis = lenis;
+        lenis.on('scroll', ScrollTrigger.update);
+        window.__lenisTicker = (time) => {
+          lenis.raf(time * 1000);
+        };
+        gsap.ticker.add(window.__lenisTicker);
+      } catch (e) {
+        console.warn('Lenis init notice:', e);
+      }
     }
 
     /* Scroll reveals */
     gsap.set('.rv', { opacity: 0, y: 26 });
     ScrollTrigger.batch('.rv', {
-      start: 'top 86%',
+      start: 'top 88%',
       onEnter: (b) =>
         gsap.to(b, {
           opacity: 1,
           y: 0,
           duration: 0.8,
           ease: 'power3.out',
-          stagger: 0.1,
+          stagger: 0.08,
           overwrite: true,
         }),
     });
 
     const fireMissed = () => {
-      const limit = window.innerHeight * 0.9;
+      const limit = window.innerHeight * 0.95;
       $$('.rv').forEach((el) => {
         if (
           el.getBoundingClientRect().top < limit &&
-          getComputedStyle(el).opacity === '0' &&
+          (getComputedStyle(el).opacity === '0' || el.style.opacity === '0') &&
           !gsap.isTweening(el)
-        )
+        ) {
           gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', overwrite: true });
+        }
       });
       ScrollTrigger.getAll().forEach((st) => {
         if (st.vars.once && st.vars.onEnter && st.progress === 1) {
@@ -123,6 +151,8 @@ if (!window.__sbHomeHeroScriptRan) {
       });
     };
     ScrollTrigger.addEventListener('refresh', () => setTimeout(fireMissed, 60));
+    setTimeout(fireMissed, 150);
+    setTimeout(fireMissed, 600);
 
     /* How it works 5 steps */
     (function steps5() {
@@ -712,5 +742,25 @@ if (!window.__sbHomeHeroScriptRan) {
     if (rk) rk.textContent = '1';
     const b1 = document.getElementById('rank1');
     if (b1) b1.style.transform = 'scale(1)';
+  }
+
+  /* Force fresh calculations across all active pins and triggers */
+  requestAnimationFrame(() => {
+    try {
+      ScrollTrigger.refresh();
+    } catch (e) {}
+  });
+};
+
+/* Self-invoke safely if loaded directly */
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.initStoreboxEngine === 'function') {
+        window.initStoreboxEngine();
+      }
+    });
+  } else {
+    window.initStoreboxEngine();
   }
 }

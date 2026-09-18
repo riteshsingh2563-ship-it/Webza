@@ -39,6 +39,17 @@ export function StoreboxScriptLoader() {
         await loadScript('/js/lenis.min.js');
         if (isCancelled) return;
         await loadScript('/js/storebox_engine.js');
+        if (isCancelled) return;
+
+        if (typeof (window as any).initStoreboxEngine === 'function') {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              if (!isCancelled && typeof (window as any).initStoreboxEngine === 'function') {
+                (window as any).initStoreboxEngine();
+              }
+            });
+          });
+        }
       } catch (err) {
         console.error('Failed to load local animation engines, falling back to CDN:', err);
         try {
@@ -46,6 +57,17 @@ export function StoreboxScriptLoader() {
           await loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js');
           await loadScript('https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js');
           await loadScript('/js/storebox_engine.js');
+          if (isCancelled) return;
+
+          if (typeof (window as any).initStoreboxEngine === 'function') {
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                if (!isCancelled && typeof (window as any).initStoreboxEngine === 'function') {
+                  (window as any).initStoreboxEngine();
+                }
+              });
+            });
+          }
         } catch (cdnErr) {
           console.error('Failed to load CDN fallback engines:', cdnErr);
         }
@@ -56,6 +78,25 @@ export function StoreboxScriptLoader() {
 
     return () => {
       isCancelled = true;
+      if (typeof window !== 'undefined') {
+        if ((window as any).ScrollTrigger) {
+          try {
+            (window as any).ScrollTrigger.getAll().forEach((t: any) => t.kill());
+          } catch (e) {}
+        }
+        if ((window as any).__lenis) {
+          try {
+            (window as any).__lenis.destroy();
+          } catch (e) {}
+          (window as any).__lenis = null;
+        }
+        if ((window as any).gsap && (window as any).__lenisTicker) {
+          try {
+            (window as any).gsap.ticker.remove((window as any).__lenisTicker);
+          } catch (e) {}
+          (window as any).__lenisTicker = null;
+        }
+      }
     };
   }, []);
 
