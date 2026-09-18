@@ -196,12 +196,12 @@ export default function AboutPage() {
                 className="p-6 rounded-2xl bg-[#111411] border border-white/10 flex flex-col justify-between text-center hover:border-white/20 transition-all duration-200 group hover:-translate-y-1"
               >
                 <div>
-                  <div className="relative w-28 h-28 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-[#6b7d50]/30 shadow-lg bg-[#181d17]">
+                  <div className="relative w-full aspect-square mb-4 rounded-2xl overflow-hidden border-2 border-[#6b7d50]/35 shadow-lg bg-[#181d17]">
                     <Image
                       src={member.image}
                       alt={`${member.name} — ${member.role}`}
-                      width={300}
-                      height={300}
+                      width={600}
+                      height={600}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>

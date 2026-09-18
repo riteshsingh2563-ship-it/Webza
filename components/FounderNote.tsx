@@ -155,12 +155,12 @@ export function FounderNote({ onOpenDraftModal }: FounderNoteProps) {
                 className="bg-white border border-[#221D15]/10 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group hover:-translate-y-1"
               >
                 <div>
-                  <div className="relative w-28 h-28 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-[#6B7D50]/30 shadow-md bg-[#151913]">
+                  <div className="relative w-full aspect-square mb-4 rounded-2xl overflow-hidden border-2 border-[#6B7D50]/35 shadow-md bg-[#151913]">
                     <Image
                       src={member.image}
                       alt={`${member.name} — ${member.role}`}
-                      width={300}
-                      height={300}
+                      width={600}
+                      height={600}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
