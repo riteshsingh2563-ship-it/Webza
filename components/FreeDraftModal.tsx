@@ -97,7 +97,7 @@ export function FreeDraftModal({
 
             <div className="pt-3 space-y-2">
               <a
-                href={`https://wa.me/?text=${whatsappMessage}`}
+                href={`https://api.whatsapp.com/send?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20b858] text-white font-label font-bold text-sm py-3.5 rounded-xl shadow-md transition-colors"
@@ -213,10 +213,17 @@ export function FreeDraftModal({
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-sm sm:text-base py-3.5 rounded-xl shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#6B7D50] hover:bg-[#5A6B42] disabled:opacity-60 disabled:cursor-not-allowed text-white font-label font-semibold text-sm sm:text-base py-3.5 rounded-xl shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2"
                 >
-                  <span>Build My Free Draft in 24 Hours</span>
-                  <span aria-hidden="true">→</span>
+                  {isSubmitting ? (
+                    <span>Submitting Draft Request...</span>
+                  ) : (
+                    <>
+                      <span>Build My Free Draft in 24 Hours</span>
+                      <span aria-hidden="true">→</span>
+                    </>
+                  )}
                 </button>
               </div>
 
