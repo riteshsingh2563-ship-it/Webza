@@ -50,9 +50,9 @@ export async function POST(req: Request) {
         )}`
       : null;
 
-    const isDraft = type === 'draft';
+    const isDraft = type === 'draft' || type === 'demo';
     const emailSubject = isDraft
-      ? `⚡ New 24h Free Draft Request: ${clientBusiness}`
+      ? `⚡ New 24h Free Demo Request: ${clientBusiness}`
       : `📩 New Project Inquiry: ${clientBusiness}`;
 
     // Admin Notification Email Template
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
                         </td>
                         <td align="right">
                           <span style="display:inline-block;background:${isDraft ? '#6B7D50' : '#2BD4BD'};color:#0E120D;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:6px 14px;border-radius:999px;">
-                            ${isDraft ? '⚡ 24H FREE DRAFT' : '📩 FORMAL INQUIRY'}
+                            ${isDraft ? '⚡ 24H FREE DEMO' : '📩 FORMAL INQUIRY'}
                           </span>
                         </td>
                       </tr>
@@ -281,12 +281,12 @@ export async function POST(req: Request) {
                             Need faster turnaround or have brand assets?
                           </h3>
                           <p style="margin:0 0 16px 0;font-size:12px;color:rgba(250,240,225,0.7);">
-                            Chat directly with Ritesh Singh and our engineering team on WhatsApp.
+                            Chat directly with Ritesh Singh on WhatsApp (+91 78981 95460).
                           </p>
-                          <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(
-                            `Hello Ritesh! I just submitted my free draft request for ${business || name || 'my business'} on webza.agency.`
+                          <a href="https://api.whatsapp.com/send?phone=917898195460&text=${encodeURIComponent(
+                            `Hello Ritesh! I just submitted my free demo request for ${business || name || 'my business'} on webza.agency.`
                           )}" target="_blank" style="display:inline-block;background-color:#25D366;color:#ffffff;padding:12px 28px;border-radius:999px;font-weight:700;font-size:13px;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.35);">
-                            Open WhatsApp Discussion →
+                            Open WhatsApp Discussion (+91 78981 95460) →
                           </a>
                         </div>
                       </td>

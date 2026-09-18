@@ -98,7 +98,7 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
               onClick={() => onSelectTier('Development Silver (₹9,999)')}
               className="w-full bg-white/10 hover:bg-white/20 text-white font-label font-semibold text-sm py-3.5 rounded-xl transition-colors text-center border border-white/15"
             >
-              Request a Free Draft →
+              Request a Free Demo →
             </button>
           </div>
 
@@ -163,7 +163,7 @@ export function PricingStorebox({ onSelectTier }: PricingStoreboxProps) {
               onClick={() => onSelectTier('Development Gold (₹12,599)')}
               className="w-full bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-sm py-4 rounded-xl shadow-lg transition-colors text-center"
             >
-              Request a Free Draft →
+              Request a Free Demo →
             </button>
           </div>
 

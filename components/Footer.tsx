@@ -103,13 +103,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenProjectBrief }) => {
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
               <a
-                href="https://wa.me/919999999999"
+                href="https://wa.me/917898195460"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-[#6b7d50] transition-colors pt-2"
+                className="flex items-center gap-2 hover:text-[#25D366] transition-colors pt-2"
               >
-                <MessageCircle className="w-4 h-4 text-[#6b7d50]" />
-                <span>WhatsApp Direct</span>
+                <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                <span>WhatsApp (+91 78981 95460)</span>
               </a>
               <a
                 href="mailto:contact@webza.agency"

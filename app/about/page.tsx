@@ -122,7 +122,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <div className="font-mono text-xs text-[#6b7d50] uppercase tracking-wider">Communication</div>
-                    <div className="font-body text-sm text-white font-medium mt-0.5">Direct WhatsApp &amp; Desk</div>
+                    <div className="font-body text-sm text-white font-medium mt-0.5">Direct WhatsApp (+91 78981 95460) &amp; Desk</div>
                   </div>
                 </div>
 
@@ -131,17 +131,17 @@ export default function AboutPage() {
                     href="/#leadArea"
                     className="inline-flex items-center gap-2 text-xs font-display font-bold uppercase tracking-wider bg-[#6b7d50] hover:bg-[#5a6b42] text-white px-5 py-3 rounded-xl transition-colors"
                   >
-                    <span>Request a Free Draft</span>
+                    <span>Request a Free Demo</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <a
-                    href="https://api.whatsapp.com/send?text=Hello%20Ritesh!%20I%20would%20like%20to%20discuss%20a%20website%20project%20with%20WEBZA."
+                    href="https://api.whatsapp.com/send?phone=917898195460&text=Hello%20Ritesh!%20I%20would%20like%20to%20discuss%20a%20website%20project%20with%20WEBZA."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-xs font-mono font-bold text-white/80 hover:text-white px-4 py-3 rounded-xl border border-white/10 hover:border-white/20 transition-colors"
                   >
                     <span className="w-2 h-2 rounded-full bg-[#25d366]" />
-                    Chat on WhatsApp
+                    Chat on WhatsApp (+91 78981 95460)
                   </a>
                 </div>
               </div>
@@ -187,14 +187,14 @@ export default function AboutPage() {
               Ready to elevate your digital flagship?
             </h3>
             <p className="font-body text-sm text-[#8e9189]">
-              Request a free 24-hour custom preview. Development starting at ₹9,999.
+              Request a free 24-hour custom demo preview. Development starting at ₹9,999.
             </p>
           </div>
           <Link
             href="/#leadArea"
             className="inline-flex items-center gap-2 text-xs font-display font-bold uppercase tracking-wider bg-[#6b7d50] hover:bg-[#5a6b42] text-white px-6 py-3.5 rounded-xl transition-colors"
           >
-            <span>Request a Free Draft</span>
+            <span>Request a Free Demo</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

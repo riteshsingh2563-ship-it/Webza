@@ -81,7 +81,7 @@ export function FreeDraftModal({
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello WEBZA! I'd like to request my free 24-hour website draft.\n\nBusiness: ${businessName}\nWhatsApp: ${phone}\nEmail: ${email || 'Not provided'}\nPackage: ${selectedTier}\nDetails/Link: ${linkOrNotes || 'None'}`
+    `Hello WEBZA! I'd like to request my free 24-hour website demo.\n\nBusiness: ${businessName}\nWhatsApp: ${phone}\nEmail: ${email || 'Not provided'}\nPackage: ${selectedTier}\nDetails/Link: ${linkOrNotes || 'None'}`
   );
 
   return (
@@ -111,7 +111,7 @@ export function FreeDraftModal({
               ✓
             </div>
             <h3 className="font-heading text-2xl font-bold text-[#221D15]">
-              Draft Request Received!
+              Demo Request Received!
             </h3>
             <p className="font-body text-sm text-[#221D15]/75 max-w-sm mx-auto leading-relaxed">
               Thank you, <strong className="text-[#221D15]">{businessName}</strong>! Our engineering team is reviewing your details. Your custom preview link will be ready in under 24 hours.
@@ -119,12 +119,12 @@ export function FreeDraftModal({
 
             <div className="pt-3 space-y-2">
               <a
-                href={`https://api.whatsapp.com/send?text=${whatsappMessage}`}
+                href={`https://api.whatsapp.com/send?phone=917898195460&text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20b858] text-white font-label font-bold text-sm py-3.5 rounded-xl shadow-md transition-colors"
               >
-                <span>Fast-Track on WhatsApp</span>
+                <span>Fast-Track on WhatsApp (+91 78981 95460)</span>
                 <span aria-hidden="true">💬</span>
               </a>
 
@@ -145,10 +145,10 @@ export function FreeDraftModal({
             </div>
 
             <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#221D15]">
-              Claim Your Free Website Draft
+              Claim Your Free Website Demo
             </h3>
             <p className="font-body text-xs sm:text-sm text-[#221D15]/70 mt-1.5 mb-6">
-              No upfront payment. No sales calls. See what your brand looks like on WEBZA before committing.
+              No upfront payment. No sales calls. See what your brand looks like on WEBZA before committing. Direct WhatsApp: <a href="https://wa.me/917898195460" target="_blank" rel="noopener noreferrer" className="text-[#4E5B38] font-bold hover:underline">+91 78981 95460</a>
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -252,10 +252,10 @@ export function FreeDraftModal({
                   className="w-full bg-[#6B7D50] hover:bg-[#5A6B42] disabled:opacity-60 disabled:cursor-not-allowed text-white font-label font-semibold text-sm sm:text-base py-3.5 rounded-xl shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
-                    <span>Submitting Draft Request...</span>
+                    <span>Submitting Demo Request...</span>
                   ) : (
                     <>
-                      <span>Build My Free Draft in 24 Hours</span>
+                      <span>Build My Free Demo in 24 Hours</span>
                       <span aria-hidden="true">→</span>
                     </>
                   )}

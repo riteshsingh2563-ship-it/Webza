@@ -109,13 +109,13 @@ export const ProjectBriefModal: React.FC<ProjectBriefModalProps> = ({
 
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href={`https://wa.me/919999999999?text=Hi%20WEBZA%2C%20I%20just%20submitted%20a%20brief%20for%20${encodeURIComponent(formData.company || formData.name)}%20(${encodeURIComponent(formData.tier)})`}
+                href={`https://wa.me/917898195460?text=Hi%20WEBZA%2C%20I%20just%20submitted%20a%20brief%20for%20${encodeURIComponent(formData.company || formData.name)}%20(${encodeURIComponent(formData.tier)})`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider bg-[#6b7d50] text-[#090a09] px-6 py-3.5 rounded-sm hover:bg-[#7d9161] transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Message on WhatsApp Now</span>
+                <span>Message on WhatsApp (+91 78981 95460)</span>
               </a>
 
               <button

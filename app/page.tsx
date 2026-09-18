@@ -56,6 +56,9 @@ export default function Home() {
         text === 'request a free draft' ||
         text === 'request a free draft →' ||
         text === 'free demo' ||
+        text === 'request a free demo' ||
+        text === 'request a free demo →' ||
+        text === 'get my free demo in 24h →' ||
         text === 'get my free draft in 24h →';
 
       if (isDraftTarget && (!href || href.startsWith('#'))) {

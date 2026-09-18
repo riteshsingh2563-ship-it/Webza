@@ -43,18 +43,27 @@ export const FinalCta: React.FC<FinalCtaProps> = ({ onOpenProjectBrief }) => {
           </button>
 
           <a
-            href="https://wa.me/919999999999?text=Hi%20WEBZA%2C%20I%20would%20like%20to%20discuss%20building%20a%20website%20for%20my%20business."
+            href="https://wa.me/917898195460?text=Hi%20WEBZA%2C%20I%20would%20like%20to%20discuss%20building%20a%20website%20for%20my%20business."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.16em] text-[#f5f4ee] bg-white/[0.04] hover:bg-white/[0.08] border border-white/15 px-8 py-5 rounded-sm transition-all"
           >
-            <MessageCircle className="w-4 h-4 text-[#6b7d50]" />
-            <span>Chat on WhatsApp</span>
+            <MessageCircle className="w-4 h-4 text-[#25D366]" />
+            <span>Chat on WhatsApp (+91 78981 95460)</span>
           </a>
         </div>
 
         {/* Direct Inquiries Capsule */}
         <div className="inline-flex flex-wrap items-center justify-center gap-6 p-4 bg-[#141813] border border-white/[0.08] rounded-md text-xs font-mono text-[#8e9189]">
+          <a
+            href="https://wa.me/917898195460"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-[#25D366] transition-colors"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+            <span>WhatsApp: +91 78981 95460</span>
+          </a>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#6b7d50]" />
             <span>Fast Turnaround (5–14 Days)</span>

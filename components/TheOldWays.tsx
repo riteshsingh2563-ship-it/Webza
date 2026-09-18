@@ -157,7 +157,7 @@ export function TheOldWays({ onOpenDraftModal }: TheOldWaysProps) {
               <ul className="mt-6 space-y-2.5 text-xs sm:text-sm font-body text-white/90">
                 <li className="flex items-start gap-2 text-[#2BD4BD]">
                   <span>✓</span>
-                  <span>Working private custom draft ready in 24 hours</span>
+                  <span>Working private custom demo ready in 24 hours</span>
                 </li>
                 <li className="flex items-start gap-2 text-[#2BD4BD]">
                   <span>✓</span>
@@ -184,7 +184,7 @@ export function TheOldWays({ onOpenDraftModal }: TheOldWaysProps) {
                 onClick={onOpenDraftModal}
                 className="w-full bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-sm py-3 px-4 rounded-xl shadow-md transition-colors text-center"
               >
-                Claim Your Free 24h Draft →
+                Claim Your Free 24h Demo →
               </button>
             </div>
           </div>

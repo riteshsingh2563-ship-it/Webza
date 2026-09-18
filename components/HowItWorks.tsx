@@ -20,9 +20,9 @@ export function HowItWorks({ onOpenDraftModal }: HowItWorksProps) {
     },
     {
       num: '02',
-      title: 'We build your custom draft',
+      title: 'We build your custom demo',
       description:
-        'Our senior engineers and designers build a real, fully interactive draft in 24 hours. Not a static Figma image — real code on a private preview link. No upfront payment required.',
+        'Our senior engineers and designers build a real, fully interactive demo in 24 hours. Not a static Figma image — real code on a private preview link. No upfront payment required.',
       pill: '24-hour delivery',
       icons: ['Next.js 14', 'Tailwind', 'Mobile-First', 'Sub-Second'],
     },
@@ -137,7 +137,7 @@ export function HowItWorks({ onOpenDraftModal }: HowItWorksProps) {
             onClick={onOpenDraftModal}
             className="inline-flex items-center justify-center gap-2 bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5"
           >
-            <span>Start Step One — Claim Free 24h Draft</span>
+            <span>Start Step One — Claim Free 24h Demo</span>
             <span aria-hidden="true">→</span>
           </button>
         </div>

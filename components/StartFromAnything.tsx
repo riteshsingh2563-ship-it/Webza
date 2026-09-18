@@ -18,7 +18,7 @@ export function StartFromAnything({ onOpenDraftModal }: StartFromAnythingProps) 
       inputLabel: 'Paste your Instagram handle or URL',
       placeholder: '@yourbusiness or instagram.com/yourbusiness',
       resultText:
-        'We extract your brand photos, bio, aesthetic colors, and service highlights directly into your draft.',
+        'We extract your brand photos, bio, aesthetic colors, and service highlights directly into your demo.',
     },
     {
       id: 'google',

@@ -90,16 +90,16 @@ export function FounderNote({ onOpenDraftModal }: FounderNoteProps) {
                   onClick={onOpenDraftModal}
                   className="bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-xs sm:text-sm px-6 py-3 rounded-full shadow-sm transition-colors"
                 >
-                  Request a Free Draft →
+                  Request a Free Demo →
                 </button>
                 <a
-                  href="https://api.whatsapp.com/send?text=Hello%20Ritesh!%20I%20would%20like%20to%20discuss%20a%20website%20project%20with%20WEBZA."
+                  href="https://api.whatsapp.com/send?phone=917898195460&text=Hello%20Ritesh!%20I%20would%20like%20to%20discuss%20a%20website%20project%20with%20WEBZA."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs sm:text-sm font-label font-bold text-[#221D15] px-5 py-3 rounded-full border border-[#221D15]/15 bg-white hover:bg-black/5 transition-colors"
                 >
                   <span className="w-2 h-2 rounded-full bg-[#25D366]" />
-                  Chat on WhatsApp
+                  Chat on WhatsApp (+91 78981 95460)
                 </a>
               </div>
             </div>

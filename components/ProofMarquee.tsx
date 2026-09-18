@@ -126,7 +126,7 @@ export function ProofMarquee({ onOpenDraftModal }: ProofMarqueeProps) {
           </div>
           <div className="space-y-1">
             <div className="font-heading text-3xl sm:text-4xl font-bold text-[#829762]">24h</div>
-            <div className="font-body text-xs sm:text-sm text-white/60">to your first draft</div>
+            <div className="font-body text-xs sm:text-sm text-white/60">to your first demo</div>
           </div>
           <div className="space-y-1">
             <div className="font-heading text-3xl sm:text-4xl font-bold text-white">₹9,999</div>

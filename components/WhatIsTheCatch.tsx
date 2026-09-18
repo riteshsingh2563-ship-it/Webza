@@ -7,12 +7,12 @@ export function WhatIsTheCatch() {
 
   const faqs = [
     {
-      q: 'How can you deliver a custom draft in 24 hours?',
+      q: 'How can you deliver a custom demo in 24 hours?',
       a: 'We eliminated 90% of agency waste. Instead of endless committee meetings and slow wireframe reviews, our senior full-stack engineers deploy directly onto modern Next.js 14 component systems. When you send us your Instagram, Google Maps, or idea, our humans craft your layout and code it into a live private preview in 24 hours.',
     },
     {
       q: 'Do I have to pay anything before seeing my website?',
-      a: 'No. Zero upfront payment is required to review your draft. We build your initial custom preview link first. You inspect it on your phone, test the speed, and see your brand come alive. If you love it, we connect your domain and launch. If you don’t, you walk away with zero risk.',
+      a: 'No. Zero upfront payment is required to review your demo. We build your initial custom preview link first. You inspect it on your phone, test the speed, and see your brand come alive. If you love it, we connect your domain and launch. If you don’t, you walk away with zero risk.',
     },
     {
       q: 'Can I sell physical products and accept UPI & Card payments?',

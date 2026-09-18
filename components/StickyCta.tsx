@@ -13,7 +13,7 @@ export function StickyCta({ onOpenDraftModal }: StickyCtaProps) {
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#2BD4BD] animate-pulse" />
           <span className="font-label text-xs font-semibold text-white truncate">
-            Free Draft in 24h
+            Free Demo in 24h
           </span>
         </div>
 

@@ -144,7 +144,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectTier }) 
                     : 'bg-white/10 hover:bg-white/20 text-white'
                 }`}
               >
-                Request a Free Draft →
+                Request a Free Demo →
               </button>
             </div>
           ))}

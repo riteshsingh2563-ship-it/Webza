@@ -91,13 +91,13 @@ export function HeroStorebox({ onOpenDraftModal }: HeroStoreboxProps) {
                   type="submit"
                   className="w-full bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-sm sm:text-base py-3.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform active:scale-[0.99] flex items-center justify-center gap-2 mt-1"
                 >
-                  <span>Request a Free Website Draft</span>
+                  <span>Request a Free Website Demo</span>
                   <span aria-hidden="true">→</span>
                 </button>
               </form>
 
               <div className="mt-3.5 flex items-center justify-center gap-3 text-xs font-body text-[#221D15]/65">
-                <span><b className="text-[#0FA88F]">✓ Free draft in 24h</b></span>
+                <span><b className="text-[#0FA88F]">✓ Free demo in 24h</b></span>
                 <span>•</span>
                 <span>No upfront payment</span>
                 <span>•</span>

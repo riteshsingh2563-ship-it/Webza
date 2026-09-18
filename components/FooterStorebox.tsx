@@ -84,17 +84,25 @@ export function FooterStorebox({ onOpenDraftModal }: FooterStoreboxProps) {
               Get Started
             </div>
             <p className="text-xs font-body text-white/60">
-              Claim your free draft preview link in 24 hours. Zero upfront commitment.
+              Claim your free demo preview link in 24 hours. Zero upfront commitment.
             </p>
             <button
               type="button"
               onClick={onOpenDraftModal}
               className="bg-[#6B7D50] hover:bg-[#5A6B42] text-white font-label font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-colors shadow-sm block w-full text-center"
             >
-              Request a Free Draft →
+              Request a Free Demo →
             </button>
-            <div className="pt-2 text-xs font-body text-white/50">
-              Direct developer desk: WhatsApp anytime.
+            <div className="pt-2 text-xs font-body text-white/70">
+              <a
+                href="https://wa.me/917898195460"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-[#25D366] transition-colors"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+                <span>WhatsApp: +91 78981 95460</span>
+              </a>
             </div>
           </div>
         </div>
