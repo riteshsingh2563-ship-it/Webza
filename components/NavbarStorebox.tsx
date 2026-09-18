@@ -20,6 +20,7 @@ export function NavbarStorebox({ onOpenDraftModal }: NavbarStoreboxProps) {
   }, []);
 
   const navLinks = [
+    { label: 'Our Work', href: '#work' },
     { label: 'How it works', href: '#how' },
     { label: 'The Difference', href: '#relief' },
     { label: 'Ecommerce', href: '#sell' },

@@ -69,9 +69,23 @@ export default function CaseStudyPage({ params }: CaseStudyProps) {
           {project.title}
         </h1>
 
-        <p className="font-serif italic text-xl sm:text-2xl text-[#8e9189] mb-12">
+        <p className="font-serif italic text-xl sm:text-2xl text-[#8e9189] mb-8">
           &ldquo;{project.tagline}&rdquo;
         </p>
+
+        {project.liveUrl && (
+          <div className="mb-10">
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider bg-[#6b7d50] hover:bg-[#7d9161] text-[#090a09] px-6 py-3.5 rounded-sm transition-all shadow-md hover:-translate-y-0.5"
+            >
+              <span>Visit Live Production Website</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          </div>
+        )}
 
         {/* Featured Visual Frame */}
         <div className="relative aspect-[16/9] rounded-sm overflow-hidden bg-[#141713] border border-white/10 shadow-2xl mb-16">

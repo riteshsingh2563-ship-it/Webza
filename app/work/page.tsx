@@ -86,7 +86,7 @@ export default function WorkPage() {
                 </div>
               </div>
 
-              <div className="p-8 pt-0 flex items-center justify-between border-t border-white/[0.08] mt-auto">
+              <div className="p-8 pt-4 flex items-center justify-between border-t border-white/[0.08] mt-auto flex-wrap gap-4">
                 <div className="flex flex-wrap gap-1.5">
                   {project.technologies.slice(0, 3).map((t, idx) => (
                     <span
@@ -98,13 +98,26 @@ export default function WorkPage() {
                   ))}
                 </div>
 
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono text-[#6b7d50] uppercase font-bold"
-                >
-                  <span>Case Study</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+                <div className="flex items-center gap-4">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-[#2BD4BD] hover:underline uppercase font-bold"
+                    >
+                      <span>Visit Live Site</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  <Link
+                    href={`/work/${project.slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#6b7d50] hover:text-[#829762] uppercase font-bold"
+                  >
+                    <span>Case Study</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </div>
             </article>
           ))}

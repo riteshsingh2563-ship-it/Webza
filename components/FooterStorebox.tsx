@@ -51,6 +51,11 @@ export function FooterStorebox({ onOpenDraftModal }: FooterStoreboxProps) {
             </div>
             <ul className="space-y-2 text-xs sm:text-sm font-body text-white/70">
               <li>
+                <a href="#work" className="hover:text-[#829762] transition-colors">
+                  Our Work (5 Client Flagships)
+                </a>
+              </li>
+              <li>
                 <a href="#how" className="hover:text-[#829762] transition-colors">
                   How It Works (5 Steps)
                 </a>
