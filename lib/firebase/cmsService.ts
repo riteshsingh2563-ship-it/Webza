@@ -79,7 +79,7 @@ At WEBZA, we believe the next era of digital dominance belongs to brands that in
 
 Every millisecond of latency introduces friction between the user’s intent and the application’s response. By pairing Next.js App Router streaming with edge compute and WebAssembly modules, we achieve desktop-grade performance directly inside the browser.`,
     coverImage: '/brand/webza-logo-master.jpg',
-    author: 'Jatin Sahu, Developer',
+    author: 'Ritesh Singh, Founder & Developer',
     publishedAt: '2026-08-20',
     status: 'published',
     tags: ['Engineering', 'Next.js', 'Performance'],
