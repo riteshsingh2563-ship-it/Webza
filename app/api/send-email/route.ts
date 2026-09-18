@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+const NOTIFICATION_EMAIL_DEFAULT = 'webzaa.in@gmail.com';
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 function escapeHtml(str: string = ''): string {
@@ -29,6 +31,7 @@ export async function POST(req: Request) {
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
+      console.error('[WEBZA Resend Error]: RESEND_API_KEY is not configured on server');
       return NextResponse.json(
         { error: 'RESEND_API_KEY is not configured on server' },
         { status: 500 }
@@ -184,7 +187,7 @@ export async function POST(req: Request) {
     `;
 
     // Recipient handling: support single or comma-separated emails
-    const rawRecipient = process.env.NOTIFICATION_EMAIL || 'delivered@resend.dev';
+    const rawRecipient = process.env.NOTIFICATION_EMAIL || NOTIFICATION_EMAIL_DEFAULT;
     const recipientEmails = rawRecipient
       .split(',')
       .map((e) => e.trim())
@@ -193,10 +196,10 @@ export async function POST(req: Request) {
     const fromAddress =
       process.env.RESEND_FROM_EMAIL || 'WEBZA Leads <onboarding@resend.dev>';
 
-    // 1. Send Admin Alert Email
+    // 1. Send Admin Alert Email directly to webzaa.in@gmail.com
     const { data: adminData, error: adminError } = await resend.emails.send({
       from: fromAddress,
-      to: recipientEmails.length > 0 ? recipientEmails : ['delivered@resend.dev'],
+      to: recipientEmails.length > 0 ? recipientEmails : [NOTIFICATION_EMAIL_DEFAULT],
       subject: emailSubject,
       html: adminHtml,
       replyTo: email || undefined,
@@ -306,16 +309,20 @@ export async function POST(req: Request) {
           </html>
         `;
 
-        await resend.emails.send({
+        const { error: clientErr } = await resend.emails.send({
           from: fromAddress,
           to: [email],
           subject: 'Your Free 24h Website Draft Request is Confirmed — WEBZA',
           html: clientHtml,
         });
-        clientConfirmationSent = true;
-      } catch (clientMailErr) {
+        if (clientErr) {
+          console.warn('[WEBZA Resend Client Notice]:', clientErr.message);
+        } else {
+          clientConfirmationSent = true;
+        }
+      } catch (clientMailErr: any) {
         // Log non-blockingly (e.g. if sending to external domain on Resend free tier)
-        console.warn('[WEBZA Resend Client Autoresponder Notice]:', clientMailErr);
+        console.warn('[WEBZA Resend Client Autoresponder Notice]:', clientMailErr?.message);
       }
     }
 
