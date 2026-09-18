@@ -37,13 +37,18 @@ export function FreeDraftModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsSubmitting(true);
     setSubmitError('');
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+
       const res = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           business: businessName,
           name: businessName,
@@ -55,17 +60,17 @@ export function FreeDraftModal({
         }),
       });
 
+      clearTimeout(timeoutId);
+
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
-        console.warn('Resend email dispatch error:', errorData);
+        console.warn('Resend email dispatch notice:', errorData);
       }
-      setSubmitted(true);
     } catch (err: any) {
-      console.warn('Resend email dispatch error:', err);
-      // Still show submitted so user gets the WhatsApp fast-track option
-      setSubmitted(true);
+      console.warn('Resend email dispatch notice:', err);
     } finally {
       setIsSubmitting(false);
+      setSubmitted(true);
     }
   };
 
@@ -80,7 +85,12 @@ export function FreeDraftModal({
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
+    <div
+      id="freeDraftModal"
+      data-modal="free-draft"
+      onClick={handleClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+    >
       <div
         className="bg-[#FAF7F1] border border-[#221D15]/15 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative text-[#221D15] max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}

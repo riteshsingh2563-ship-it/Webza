@@ -21,13 +21,26 @@ export default function Home() {
     setIsDraftModalOpen(false);
   };
 
-  // Intercept any link or button pointing to #leadArea, draft, or demo to open the modal
+  // Intercept external page links pointing to #leadArea or draft to open the modal
   useEffect(() => {
     const handleGlobalClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
+
+      // NEVER intercept clicks originating inside a modal or form!
+      if (
+        target.closest('#freeDraftModal') ||
+        target.closest('[data-modal]') ||
+        target.closest('form')
+      ) {
+        return;
+      }
+
       const anchor = (target.closest('a') || target.closest('button')) as HTMLElement | null;
       if (!anchor) return;
+
+      // Never intercept submit buttons
+      if (anchor.getAttribute('type') === 'submit') return;
 
       const href = anchor.getAttribute('href');
       const text = (anchor.textContent || '').trim().toLowerCase();
@@ -39,10 +52,11 @@ export default function Home() {
         anchor.classList.contains('fb4-btn') ||
         Boolean(anchor.closest('#stickyCta')) ||
         anchor.hasAttribute('data-draft-modal') ||
-        text.includes('free draft') ||
-        text.includes('request a free draft') ||
-        text.includes('free demo') ||
-        text.includes('claim your free');
+        text === 'free draft' ||
+        text === 'request a free draft' ||
+        text === 'request a free draft →' ||
+        text === 'free demo' ||
+        text === 'get my free draft in 24h →';
 
       if (isDraftTarget && (!href || href.startsWith('#'))) {
         e.preventDefault();
